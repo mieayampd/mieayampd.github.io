@@ -16,7 +16,9 @@ let gameState = {
     gameOver: false,
     selectedTopping: null,
     difficultyLevel: 0,
-    startTime: 0
+    startTime: 0,
+    isMuted: localStorage.getItem('mieAyamMuted') === 'true',
+    audioEnabled: true
 };
 
 const player = {
@@ -28,6 +30,11 @@ let toppings = [];
 let canvas, ctx;
 let images = {};
 let sizeMultiplier = 1;
+
+// Web Audio API Variables
+let audioContext = null;
+let bgmOsc = null;
+let bgmGain = null;
 
 function initGame() {
     canvas = document.getElementById('gameCanvas');
@@ -96,20 +103,132 @@ function setupListeners() {
         ['mousedown', 'touchstart'].forEach(ev => rightBtn.addEventListener(ev, e => { player.keys.right = true; e.preventDefault(); }));
         ['mouseup', 'touchend', 'mouseleave'].forEach(ev => rightBtn.addEventListener(ev, () => player.keys.right = false));
     }
+
+    const muteBtn = document.getElementById('muteBtn');
+    if (muteBtn) {
+        updateMuteIcon();
+        muteBtn.addEventListener('click', toggleMute);
+    }
 }
 
-function resizeCanvas() {
-    const rect = canvas.parentNode.getBoundingClientRect();
-    canvas.width = rect.width;
-    canvas.height = rect.height;
+// ===== AUDIO LOGIC (Oscillators) =====
+
+function initAudioContext() {
+    if (!audioContext) {
+        try {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        } catch (e) {
+            console.error('Failed to initialize Audio Context:', e);
+            return false;
+        }
+    }
+    if (audioContext.state === 'suspended') {
+        audioContext.resume();
+    }
+    return true;
+}
+
+function toggleMute() {
+    gameState.isMuted = !gameState.isMuted;
+    localStorage.setItem('mieAyamMuted', gameState.isMuted);
+    updateMuteIcon();
     
-    // Scale objects based on width (Base: 800px)
+    if (gameState.isMuted) {
+        stopBGM();
+    } else if (gameState.isRunning) {
+        startBGM();
+    }
+}
+
+function updateMuteIcon() {
+    const icon = document.getElementById('volumeIcon');
+    if (!icon) return;
+    if (gameState.isMuted) {
+        icon.innerHTML = '<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.81.86 5 3.48 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>';
+    } else {
+        icon.innerHTML = '<path d="M14 8.83v6.34L11.83 13H9v-2h2.83L14 8.83M16 4l-5 5H7v6h4l5 5V4z"/>';
+    }
+}
+
+function playCollisionSound() {
+    if (gameState.isMuted || !initAudioContext()) return;
+    const now = audioContext.currentTime;
+    const osc = audioContext.createOscillator();
+    const gain = audioContext.createGain();
+    osc.connect(gain);
+    gain.connect(audioContext.destination);
+    osc.frequency.setValueAtTime(800, now);
+    osc.frequency.exponentialRampToValueAtTime(200, now + 0.3);
+    gain.gain.setValueAtTime(0.3, now);
+    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+    osc.start(now);
+    osc.stop(now + 0.3);
+}
+
+function startBGM() {
+    if (gameState.isMuted || !initAudioContext()) return;
+    stopBGM();
+
+    console.log("Starting BGM...");
+    bgmGain = audioContext.createGain();
+    bgmGain.connect(audioContext.destination);
+    bgmGain.gain.setValueAtTime(0, audioContext.currentTime);
+    bgmGain.gain.linearRampToValueAtTime(0.2, audioContext.currentTime + 1);
+
+    function playNote(freq, time, duration = 0.4) {
+        if (!gameState.isRunning || gameState.isMuted) return;
+        const osc = audioContext.createOscillator();
+        const g = audioContext.createGain();
+        osc.type = 'sine'; // Sine is smoother for bass
+        osc.connect(g);
+        g.connect(bgmGain);
+        osc.frequency.setValueAtTime(freq, time);
+        g.gain.setValueAtTime(0.1, time);
+        g.gain.exponentialRampToValueAtTime(0.001, time + duration);
+        osc.start(time);
+        osc.stop(time + duration);
+    }
+
+    const tempo = 500; // ms
+    gameState.bgmInterval = setInterval(() => {
+        if (!gameState.isRunning || gameState.isMuted) {
+            stopBGM();
+            return;
+        }
+        const now = audioContext.currentTime;
+        // Simple 4/4 Beat
+        playNote(130.81, now); // C3
+        playNote(196.00, now + 0.25, 0.2); // G3
+    }, tempo);
+}
+
+function stopBGM() {
+    console.log("Stopping BGM...");
+    if (gameState.bgmInterval) {
+        clearInterval(gameState.bgmInterval);
+        gameState.bgmInterval = null;
+    }
+    if (bgmGain) {
+        bgmGain.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.2);
+        const g = bgmGain;
+        setTimeout(() => { try { g.disconnect(); } catch(e) {} }, 300);
+        bgmGain = null;
+    }
+}
+
+// ===== GAME CORE =====
+
+function resizeCanvas() {
+    const container = canvas.parentNode;
+    canvas.width = container.clientWidth;
+    canvas.height = container.clientHeight;
+    
     sizeMultiplier = Math.min(canvas.width / 800, 1);
-    if (canvas.width < 500) sizeMultiplier = 0.7; // Smaller on mobile
+    if (canvas.width < 500) sizeMultiplier = 0.7;
 
     player.width = 80 * sizeMultiplier;
     player.height = 80 * sizeMultiplier;
-    player.speed = canvas.width / 60; // Consistent travel time
+    player.speed = canvas.width / 60;
     if (player.speed < 7) player.speed = 7;
 
     player.y = canvas.height - player.height - 20;
@@ -132,6 +251,7 @@ function startGame() {
     document.getElementById('game-hud').classList.remove('opacity-0');
     if (window.innerWidth < 768) document.getElementById('mobileControls').classList.remove('opacity-0');
 
+    startBGM();
     requestAnimationFrame(gameLoop);
 }
 
@@ -168,7 +288,6 @@ function spawnTopping() {
     const typeKey = keys[Math.floor(Math.random() * keys.length)];
     const type = TOPPING_TYPES[typeKey];
     const spriteMap = { sambal: 'toppingSambal', pangsit: 'toppingPangsit', daunbawang: 'toppingDaunbawang' };
-    
     const scaledSize = type.size * sizeMultiplier * 1.2;
     
     toppings.push({
@@ -177,7 +296,7 @@ function spawnTopping() {
         width: scaledSize,
         height: scaledSize,
         type: typeKey,
-        speed: type.speed * (canvas.height / 600), // Scale speed with height
+        speed: type.speed * (canvas.height / 600),
         rotation: 0,
         image: images[spriteMap[typeKey]]
     });
@@ -193,6 +312,9 @@ function isColliding(a, b) {
 
 function endGame() {
     gameState.isRunning = false;
+    stopBGM();
+    playCollisionSound();
+
     if (gameState.score > gameState.highScore) {
         gameState.highScore = gameState.score;
         localStorage.setItem('mieAyamHighScore', gameState.highScore);
@@ -210,8 +332,6 @@ function updateHighScoreDisplay() {
 
 function render() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    // Background simple gradient
     const grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
     grad.addColorStop(0, '#1c1917');
     grad.addColorStop(1, '#0c0a09');
