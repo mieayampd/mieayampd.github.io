@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mie Ayam Pak Dul Bumiayu – Enak, Murah, Bikin Nagih</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Mie ayam enak di Bumiayu mulai 12K. Bisa dine-in & delivery. Buka jam 11 Pagi sampai habis!">
+    <meta name="keywords"
+        content="mie ayam bumiayu, mie ayam pak dul, kuliner bumiayu, mie ayam legendaris, mie ayam enak kabuyutan, bakso bumiayu, delivery mie ayam">
+    <meta name="author" content="Mie Ayam Pak Dul">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mieayam.pakdul.in/">
+    <meta property="og:title" content="Mie Ayam Pak Dul Bumiayu – Enak, Murah, Bikin Nagih">
+    <meta property="og:description"
+        content="Mie ayam enak di Bumiayu mulai 12K. Bisa dine-in & delivery. Buka jam 11 Pagi sampai habis!">
+    <meta property="og:image" content="assets/img/hero.webp">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/webp" href="assets/img/logo-nav.webp">
+    <link rel="apple-touch-icon" href="assets/img/logo-nav.webp">
+    <meta name="theme-color" content="#d97706">
+
+    <!-- JSON-LD LocalBusiness Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FoodEstablishment",
+      "name": "Mie Ayam Pak Dul",
+      "image": "https://mieayam.pakdul.in/assets/img/hero.webp",
+      "@id": "https://mieayam.pakdul.in/",
+      "url": "https://mieayam.pakdul.in/",
+      "telephone": "+6288808620330",
+      "priceRange": "Rp 12.000 - Rp 15.000",
+      "menu": "https://mieayam.pakdul.in/#menu",
+      "servesCuisine": "Indonesian",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Karangtuang RT 5 RW 4",
+        "addressLocality": "Bumiayu",
+        "addressRegion": "Jawa Tengah",
+        "postalCode": "52273",
+        "addressCountry": "ID"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -7.2345,
+        "longitude": 109.0123
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+        ],
+        "opens": "11:00",
+        "closes": "21:00"
+      }
+    }
+    </script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/tailwind.css">
+
+    <!-- Speed Optimizations -->
+    <link rel="preconnect" href="https://maps.googleapis.com">
+    <link rel="preconnect" href="https://maps.gstatic.com" crossorigin>
+
+    <!-- Preload Critical Fonts -->
+    <link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/playfair-display.woff2" as="font" type="font/woff2" crossorigin>
+</head>
+
+<body class="bg-stone-50 text-stone-900 selection:bg-orange-200 selection:text-orange-900">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 px-6 py-4">
+        <div
+            class="max-w-7xl mx-auto flex items-center justify-between bg-white/70 backdrop-blur-md rounded-2xl px-6 py-3 border border-stone-200 shadow-sm">
+            <a href="#" class="flex items-center gap-3">
+                <img src="assets/img/logo-nav.webp" alt="Mie Ayam Pak Dul Logo" class="w-10 h-10 object-contain">
+                <span class="font-display text-xl font-bold tracking-tight">Mie Ayam Pak Dul</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <div class="hidden lg:flex items-center gap-6 font-medium text-sm text-stone-600">
+                <a href="#menu" class="hover:text-amber-600 transition-colors">Menu</a>
+                <a href="#delivery" class="hover:text-amber-600 transition-colors">Delivery</a>
+                <a href="#kenapa" class="hover:text-amber-600 transition-colors">Kenapa Enak?</a>
+                <a href="#lokasi" class="hover:text-amber-600 transition-colors">Lokasi</a>
+                <a href="game/" class="hover:text-amber-600 transition-colors">Mini Game</a>
+                <a href="https://wa.me/6288808620330?text=Mau+pesen+mie+ayam"
+                    class="bg-amber-600 text-white px-5 py-2.5 rounded-xl hover:bg-amber-700 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-amber-600/20">
+                    Pesan Sekarang
+                </a>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button id="menu-toggle" aria-label="Buka Menu"
+                class="lg:hidden p-2 text-stone-600 hover:bg-stone-100 rounded-lg transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full px-6 py-4 lg:hidden">
+            <div
+                class="bg-white rounded-2xl border border-stone-200 shadow-xl overflow-hidden animate-in fade-in slide-in-from-top-4 duration-300">
+                <div class="flex flex-col p-4 gap-2">
+                    <a href="#menu"
+                        class="px-4 py-3 rounded-xl hover:bg-stone-50 font-medium transition-colors">Menu</a>
+                    <a href="#delivery"
+                        class="px-4 py-3 rounded-xl hover:bg-stone-50 font-medium transition-colors">Delivery</a>
+                    <a href="#kenapa"
+                        class="px-4 py-3 rounded-xl hover:bg-stone-50 font-medium transition-colors">Kenapa Enak?</a>
+                    <a href="#lokasi"
+                        class="px-4 py-3 rounded-xl hover:bg-stone-50 font-medium transition-colors">Lokasi</a>
+                    <a href="game/" class="px-4 py-3 rounded-xl hover:bg-stone-50 font-medium transition-colors">Mini
+                        Game</a>
+                    <a href="https://wa.me/6288808620330?text=Mau+pesen+mie+ayam"
+                        class="bg-amber-600 text-white text-center py-4 rounded-xl font-bold mt-2 shadow-lg shadow-amber-600/20">
+                        Pesan Sekarang
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden scroll-mt-24">
+            <div
+                class="absolute top-0 right-0 -z-10 w-1/2 h-full opacity-10 bg-gradient-to-l from-amber-200 to-transparent blur-3xl rounded-full">
+            </div>
+
+            <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-mono font-semibold uppercase tracking-wider">
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+                        </span>
+                        Mie Ayam Pak Dul Karangtuang
+                    </div>
+                    <h1 class="text-6xl md:text-8xl font-display font-extrabold leading-[1.1] tracking-tight">
+                        Enak, Murah,<br>
+                        <span class="text-amber-600">Bikin Nagih.</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-stone-600 max-w-lg leading-relaxed">
+                        Mie kuning kenyal, ayam bumbu meresap, kuah gurih bikin slurp. Mulai Rp 12.000 aja. Bisa makan
+                        di sini atau delivery ojek online.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <a href="https://wa.me/6288808620330?text=Mau+pesen+mie+ayam"
+                            class="px-8 py-4 bg-stone-900 text-white rounded-2xl font-bold text-center hover:bg-stone-800 transition-all hover:shadow-xl active:scale-95 flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                            </svg>
+                            Order WhatsApp
+                        </a>
+                        <a href="https://goo.gl/maps/DGD8kceYyKL6v3gFA"
+                            class="px-8 py-4 bg-white border border-stone-200 rounded-2xl font-bold text-center hover:bg-stone-50 transition-all active:scale-95">
+                            Lihat Lokasi
+                        </a>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div
+                        class="relative aspect-square rounded-[2rem] overflow-hidden rotate-2 hover:rotate-0 transition-transform duration-500 shadow-2xl">
+                        <img src="assets/img/hero.webp" alt="Mie Ayam Pak Dul" width="637" height="637"
+                            fetchpriority="high"
+                            class="w-full h-full object-cover scale-110 hover:scale-100 transition-transform duration-700">
+                    </div>
+                    <div
+                        class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-stone-100 hidden sm:block">
+                        <p class="text-xs font-mono text-stone-500 mb-1">Buka Jam</p>
+                        <p class="text-lg font-bold">11:00 Pagi</p>
+                    </div>
+                    <div
+                        class="absolute -top-6 -right-6 bg-amber-600 text-white p-6 rounded-2xl shadow-xl border border-amber-500 hidden sm:block">
+                        <p class="text-3xl font-display font-black">12K</p>
+                        <p class="text-xs font-semibold opacity-80">Harga Mulai</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kenapa Enak Section -->
+        <section id="kenapa" class="py-20 bg-stone-50 px-6 scroll-mt-24">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                    <h2 class="text-xs uppercase font-mono tracking-widest text-amber-600 font-bold">Keunggulan</h2>
+                    <h3 class="text-4xl md:text-5xl font-display font-extrabold tracking-tight">Kenapa Pelanggan Selalu
+                        Balik Lagi?</h3>
+                    <p class="text-stone-500">Kami tahu kamu punya banyak pilihan di Bumiayu. Ini alasan kenapa Mie Ayam
+                        Pak Dul tetap jadi favorit.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Feature 1 -->
+                    <div
+                        class="bg-white p-8 rounded-3xl border border-stone-100 hover:border-amber-200 hover:shadow-xl transition-all">
+                        <div
+                            class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center text-amber-600 mb-6">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86 7.717l.477 2.387a2 2 0 001.57 1.57l2.387.477a2 2 0 002.044-2.044l-.477-2.387a2 2 0 00-.746-1.121z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-bold mb-3">Resep yang Kuat</h4>
+                        <p class="text-sm text-stone-500 leading-relaxed">Bumbu dengan rempah yang kuat. Rasa autentik,
+                            bukan mie ayam generik yang gitu-gitu aja.</p>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div
+                        class="bg-white p-8 rounded-3xl border border-stone-100 hover:border-amber-200 hover:shadow-xl transition-all">
+                        <div
+                            class="w-12 h-12 bg-green-100 rounded-2xl flex items-center justify-center text-green-600 mb-6">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-bold mb-3">Harga Terjangkau</h4>
+                        <p class="text-sm text-stone-500 leading-relaxed">Mulai Rp 12.000 kamu udah bisa kenyang. Murah
+                            tapi nggak murahan, rasa tetap juara.</p>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div
+                        class="bg-white p-8 rounded-3xl border border-stone-100 hover:border-amber-200 hover:shadow-xl transition-all">
+                        <div
+                            class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 mb-6">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-bold mb-3">Bisa Delivery Ojol</h4>
+                        <p class="text-sm text-stone-500 leading-relaxed">Males keluar rumah? Tenang. Pesan lewat ojek
+                            online atau langsung chat WhatsApp.</p>
+                    </div>
+                    <!-- Feature 4 -->
+                    <div
+                        class="bg-white p-8 rounded-3xl border border-stone-100 hover:border-amber-200 hover:shadow-xl transition-all">
+                        <div
+                            class="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center text-orange-600 mb-6">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-bold mb-3">Takeaway Praktis</h4>
+                        <p class="text-sm text-stone-500 leading-relaxed">Dibungkus pakai paper bowl premium. Kuah nggak
+                            bakal tumpah, awet hangatnya, siap dimakan!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="py-20 bg-white px-6 scroll-mt-24 overflow-hidden">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                    <h2 class="text-xs uppercase font-mono tracking-widest text-amber-600 font-bold">Menu Pilihan</h2>
+                    <h3 class="text-4xl md:text-5xl font-display font-extrabold tracking-tight">Favorit Pelanggan</h3>
+                    <p class="text-stone-500">Tiap mangkuk dibuat dengan sepenuh hati. Mau yang klasik atau yang komplit
+                        — semua ada di sini.</p>
+
+                    <!-- Mobile Slide Guide -->
+                    <div
+                        class="flex items-center justify-center gap-2 text-stone-400 text-xs font-medium md:hidden animate-pulse">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                        <span>Geser untuk lihat menu</span>
+                    </div>
+                </div>
+
+                <!-- Slideable Grid -->
+                <div
+                    class="flex overflow-x-auto md:grid md:grid-cols-3 gap-6 md:gap-8 snap-x snap-mandatory pb-8 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide">
+                    <!-- Item 1 -->
+                    <div
+                        class="flex-shrink-0 w-[85%] sm:w-[70%] md:w-full snap-center group bg-stone-50 rounded-3xl overflow-hidden border border-stone-100 hover:border-amber-200 transition-all duration-500">
+                        <div class="aspect-[4/3] overflow-hidden">
+                            <img src="assets/img/menu.webp" alt="Mie Ayam Original" width="400" height="300"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                loading="lazy">
+                        </div>
+                        <div class="p-8 space-y-4">
+                            <div class="flex justify-between items-start">
+                                <h4 class="text-xl font-bold">Mie Ayam Original</h4>
+                                <span class="text-amber-600 font-mono font-bold">Rp 12k</span>
+                            </div>
+                            <p class="text-stone-500 text-sm leading-relaxed">Mie kenyal dengan topping ayam berbumbu,
+                                daun bawang, dan kuah gurih khas Pak Dul.</p>
+                            <a href="https://wa.me/6288808620330?text=Mau+pesen+Mie+Ayam+Original"
+                                class="block w-full text-center py-3 bg-white border border-stone-200 rounded-xl font-bold group-hover:bg-amber-600 group-hover:text-white group-hover:border-amber-600 transition-all">
+                                Pilih Menu
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div
+                        class="flex-shrink-0 w-[85%] sm:w-[70%] md:w-full snap-center group bg-stone-50 rounded-3xl overflow-hidden border border-stone-100 hover:border-amber-200 transition-all duration-500">
+                        <div class="aspect-[4/3] overflow-hidden">
+                            <img src="assets/img/bakso.webp" alt="Mie Ayam Pangsit" width="400" height="300"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                loading="lazy">
+                        </div>
+                        <div class="p-8 space-y-4">
+                            <div class="flex justify-between items-start">
+                                <h4 class="text-xl font-bold">Mie Ayam Pangsit</h4>
+                                <span class="text-amber-600 font-mono font-bold">Rp 15k</span>
+                            </div>
+                            <p class="text-stone-500 text-sm leading-relaxed">Ditambah pangsit kulit tipis dengan isian
+                                ayam yang juicy. Level up banget!</p>
+                            <a href="https://wa.me/6288808620330?text=Mau+pesen+Mie+Ayam+Pangsit"
+                                class="block w-full text-center py-3 bg-white border border-stone-200 rounded-xl font-bold group-hover:bg-amber-600 group-hover:text-white group-hover:border-amber-600 transition-all">
+                                Pilih Menu
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div
+                        class="flex-shrink-0 w-[85%] sm:w-[70%] md:w-full snap-center group bg-stone-50 rounded-3xl overflow-hidden border border-stone-100 hover:border-amber-200 transition-all duration-500">
+                        <div class="aspect-[4/3] overflow-hidden">
+                            <img src="assets/img/hero.webp" alt="Mie Ayam Ceker"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                loading="lazy">
+                        </div>
+                        <div class="p-8 space-y-4">
+                            <div class="flex justify-between items-start">
+                                <h4 class="text-xl font-bold">Mie Ayam Ceker</h4>
+                                <span class="text-amber-600 font-mono font-bold">Rp 15k</span>
+                            </div>
+                            <p class="text-stone-500 text-sm leading-relaxed">Ceker empuk atau balungan gurih jadi teman
+                                mie yang sempurna. Bikin nagih terus.</p>
+                            <a href="https://wa.me/6288808620330?text=Mau+pesen+Mie+Ayam+Ceker"
+                                class="block w-full text-center py-3 bg-white border border-stone-200 rounded-xl font-bold group-hover:bg-amber-600 group-hover:text-white group-hover:border-amber-600 transition-all">
+                                Pilih Menu
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Delivery Partners -->
+        <section id="delivery" class="py-20 px-6 bg-amber-50 scroll-mt-24">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div class="space-y-8">
+                        <div class="space-y-4">
+                            <h2 class="text-xs uppercase font-mono tracking-widest text-amber-600 font-bold">Layanan
+                                Antar</h2>
+                            <h3 class="text-4xl md:text-5xl font-display font-extrabold tracking-tight">Pesan Lewat Ojek
+                                Lokal Terpercaya</h3>
+                            <p class="text-stone-600 leading-relaxed">Nggak perlu keluar rumah. Kamu bisa order Mie Ayam
+                                Pak Dul lewat 10 ojek lokal terpercaya di Bumiayu. Tinggal tap, pesan, tunggu!</p>
+                        </div>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                            <a href="https://api.whatsapp.com/send?phone=628176574545&text=Order+Mie+Ayam+Pak+Dul"
+                                class="p-3 bg-white rounded-xl border border-amber-200 text-center font-bold text-xs hover:bg-amber-600 hover:text-white transition-all">ITE
+                                JEK</a>
+                            <a href="https://api.whatsapp.com/send?phone=6282113815160&text=Order+Mie+Ayam+Pak+Dul"
+                                class="p-3 bg-white rounded-xl border border-amber-200 text-center font-bold text-xs hover:bg-amber-600 hover:text-white transition-all">SPIN
+                                BIKE</a>
+                            <a href="https://api.whatsapp.com/send?phone=6282328014991&text=Order+Mie+Ayam+Pak+Dul"
+                                class="p-3 bg-white rounded-xl border border-amber-200 text-center font-bold text-xs hover:bg-amber-600 hover:text-white transition-all">FAST
+                                ON</a>
+                            <a href="https://api.whatsapp.com/send?phone=6282195943733&text=Order+Mie+Ayam+Pak+Dul"
+                                class="p-3 bg-white rounded-xl border border-amber-200 text-center font-bold text-xs hover:bg-amber-600 hover:text-white transition-all">AVES</a>
+                            <a href="https://api.whatsapp.com/send?phone=6285800782914&text=Order+Mie+Ayam+Pak+Dul"
+                                class="p-3 bg-white rounded-xl border border-amber-200 text-center font-bold text-xs hover:bg-amber-600 hover:text-white transition-all">BANTER</a>
+                            <a href="https://linktr.ee/mieayam.pakdul"
+                                class="p-3 bg-amber-600 text-white rounded-xl text-center font-bold text-xs hover:bg-amber-700 transition-all">LIHAT
+                                SEMUA</a>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                        <img src="assets/img/exterior-new.webp" alt="Ojek Online Bumiayu" width="637" height="358"
+                            class="rounded-[2.5rem] shadow-2xl transition-all duration-700 group-hover:scale-[1.02]">
+                        <div
+                            class="absolute -bottom-2 -right-2 md:-bottom-6 md:-right-6 bg-white p-3 md:p-6 rounded-2xl shadow-xl border border-amber-100 max-w-[140px] md:max-w-[200px]">
+                            <p class="text-[10px] md:text-sm font-bold text-stone-900 leading-tight">Hangat & Cepat
+                                Sampai ke Rumah.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lokasi Section -->
+        <section id="lokasi" class="py-20 px-6 scroll-mt-24">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-12 items-center">
+                <div
+                    class="w-full md:w-1/2 overflow-hidden rounded-[2.5rem] shadow-2xl border-8 border-white h-[400px]">
+                    <iframe title="Lokasi Mie Ayam Pak Dul Bumiayu"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.964787697785!2d109.00595397492665!3d-7.244847292761598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6f8fb4a732ffaf%3A0xa2811a865bc03405!2sMie%20Ayam%20Pak%20Dul%20%7C%20Mie%20Ayam%20Bumiayu%20Karangtuang%20Favorit%2C%20Rekomended!5e0!3m2!1sen!2sid!4v1775906009324!5m2!1sen!2sid"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="w-full md:w-1/2 space-y-6">
+                    <h3 class="text-4xl font-display font-extrabold tracking-tight">Cari Mie Ayam Terdekat di Bumiayu?
+                    </h3>
+                    <p class="text-stone-500 leading-relaxed">Kami ada di Karangtuang RT 5 RW 4 — gampang dijangkau dari
+                        berbagai arah. Cari saja "Mie Ayam Pak Dul" di Google Maps.</p>
+                    <div class="space-y-4">
+                        <a href="https://goo.gl/maps/DGD8kceYyKL6v3gFA"
+                            class="inline-flex items-center gap-3 text-amber-600 font-bold hover:gap-5 transition-all">
+                            Buka di Google Maps →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mini Game Section -->
+        <section class="py-20 px-6 bg-stone-900 text-white">
+            <div class="max-w-4xl mx-auto text-center space-y-8">
+                <div class="inline-block p-4 bg-amber-600 rounded-3xl rotate-3 mb-4">
+                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+                    </svg>
+                </div>
+                <h3 class="text-4xl md:text-5xl font-display font-extrabold">Bosan Nunggu Pesanan?</h3>
+                <p class="text-stone-400 text-lg">Main Mini Game seru! Hindari topping yang nggak kamu
+                    suka dan raih skor tertinggi langsung di browser.</p>
+                <a href="game/"
+                    class="inline-block px-10 py-5 bg-amber-600 text-white rounded-2xl font-black text-xl hover:bg-amber-700 transition-all hover:scale-105 active:scale-95 shadow-xl shadow-amber-600/20">
+                    Main Sekarang — Gratis!
+                </a>
+            </div>
+        </section>
+
+        <!-- FAQ Section Placeholder -->
+        <section id="faq" class="py-20 px-6 bg-white">
+            <div class="max-w-3xl mx-auto text-center space-y-4">
+                <h3 class="text-3xl font-display font-extrabold">Punya Pertanyaan?</h3>
+                <p class="text-stone-500">Silakan hubungi admin via WhatsApp untuk info ketersediaan stok atau pesanan
+                    partai besar.</p>
+                <a href="https://wa.me/6288808620330?text=Halo+admin+Mie+Ayam+Pak+Dul"
+                    class="text-amber-600 font-bold hover:underline">Chat Admin Sekarang</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-stone-50 py-20 px-6 border-t border-stone-200">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+            <div class="space-y-6">
+                <div class="flex items-center gap-3">
+                    <img src="assets/img/logo-nav.webp" alt="Logo" class="w-10 h-10 object-contain">
+                    <span class="font-display text-2xl font-bold tracking-tight">Mie Ayam Pak Dul</span>
+                </div>
+                <p class="text-stone-500 max-w-md">Mie ayam enak di Bumiayu mulai 12K. Bisa dine-in & delivery. Buka
+                    setiap hari pukul 11.00 WIB sampai habis!</p>
+                <p class="text-stone-600 text-sm">Karangtuang RT 5 RW 4, Bumiayu, Jawa Tengah 52273</p>
+            </div>
+            <div class="flex flex-wrap gap-4 md:justify-end">
+                <a href="https://www.instagram.com/mieayam.pakdul"
+                    class="px-6 py-3 bg-white border border-stone-200 rounded-xl font-bold hover:bg-amber-600 hover:text-white transition-all">Instagram</a>
+                <a href="https://linktr.ee/mieayam.pakdul"
+                    class="px-6 py-3 bg-white border border-stone-200 rounded-xl font-bold hover:bg-amber-600 hover:text-white transition-all">Linktree</a>
+                <a href="https://goo.gl/maps/DGD8kceYyKL6v3gFA"
+                    class="px-6 py-3 bg-white border border-stone-200 rounded-xl font-bold hover:bg-amber-600 hover:text-white transition-all">Google
+                    Maps</a>
+            </div>
+        </div>
+        <div
+            class="max-w-7xl mx-auto mt-20 pt-8 border-t border-stone-200 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-stone-600 uppercase tracking-widest font-mono font-bold">
+            <p>&copy; <span id="current-year"></span> Mie Ayam Pak Dul Bumiayu. All rights reserved.</p>
+            <p>Made with &hearts; in Bumiayu</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/lenis.min.js"></script>
+    <script>
+        // Smooth Scrolling with Lenis
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+            infinite: false,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+
+        // Navbar Interaction
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-2');
+                navbar.querySelector('div').classList.remove('bg-white/70');
+                navbar.querySelector('div').classList.add('bg-white/95', 'shadow-lg');
+            } else {
+                navbar.classList.remove('py-2');
+                navbar.querySelector('div').classList.add('bg-white/70');
+                navbar.querySelector('div').classList.remove('bg-white/95', 'shadow-lg');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Set Current Year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Simple Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-8');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section > div').forEach(section => {
+            section.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-8');
+            observer.observe(section);
+        });
+
+        // Smooth Scroll Interception
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                e.preventDefault();
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    lenis.scrollTo(targetElement, {
+                        offset: -20, // Small adjustment for the sticky navbar
+                        duration: 1.5,
+                        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
