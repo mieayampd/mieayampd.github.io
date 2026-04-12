@@ -27,6 +27,7 @@ const player = {
 let toppings = [];
 let canvas, ctx;
 let images = {};
+let sizeMultiplier = 1;
 
 function initGame() {
     canvas = document.getElementById('gameCanvas');
@@ -34,7 +35,9 @@ function initGame() {
     ctx = canvas.getContext('2d');
 
     resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('resize', () => {
+        resizeCanvas();
+    });
 
     loadAssets().then(() => {
         setupListeners();
@@ -99,11 +102,22 @@ function resizeCanvas() {
     const rect = canvas.parentNode.getBoundingClientRect();
     canvas.width = rect.width;
     canvas.height = rect.height;
-    player.y = canvas.height - 80;
+    
+    // Scale objects based on width (Base: 800px)
+    sizeMultiplier = Math.min(canvas.width / 800, 1);
+    if (canvas.width < 500) sizeMultiplier = 0.7; // Smaller on mobile
+
+    player.width = 80 * sizeMultiplier;
+    player.height = 80 * sizeMultiplier;
+    player.speed = canvas.width / 60; // Consistent travel time
+    if (player.speed < 7) player.speed = 7;
+
+    player.y = canvas.height - player.height - 20;
     player.x = canvas.width / 2 - player.width / 2;
 }
 
 function startGame() {
+    resizeCanvas();
     gameState.isRunning = true;
     gameState.score = 0;
     gameState.startTime = Date.now();
@@ -155,13 +169,15 @@ function spawnTopping() {
     const type = TOPPING_TYPES[typeKey];
     const spriteMap = { sambal: 'toppingSambal', pangsit: 'toppingPangsit', daunbawang: 'toppingDaunbawang' };
     
+    const scaledSize = type.size * sizeMultiplier * 1.2;
+    
     toppings.push({
-        x: Math.random() * (canvas.width - type.size),
-        y: -type.size,
-        width: type.size,
-        height: type.size,
+        x: Math.random() * (canvas.width - scaledSize),
+        y: -scaledSize,
+        width: scaledSize,
+        height: scaledSize,
         type: typeKey,
-        speed: type.speed,
+        speed: type.speed * (canvas.height / 600), // Scale speed with height
         rotation: 0,
         image: images[spriteMap[typeKey]]
     });
