@@ -64,7 +64,8 @@
     </script>
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="./tailwind.css">
+    <link rel="preload" href="./tailwind.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="./tailwind.css"></noscript>
 
     <!-- Speed Optimizations -->
     <link rel="preconnect" href="https://maps.googleapis.com">
@@ -94,7 +95,7 @@
                 <a href="#lokasi" class="hover:text-amber-600 transition-colors">Lokasi</a>
                 <a href="game/" class="hover:text-amber-600 transition-colors">Mini Game</a>
                 <a href="https://wa.me/6288808620330?text=Mau+pesen+mie+ayam"
-                    class="bg-amber-600 text-white px-5 py-2.5 rounded-xl hover:bg-amber-700 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-amber-600/20">
+                    class="bg-amber-700 text-white px-5 py-2.5 rounded-xl hover:bg-amber-800 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-amber-700/20">
                     Pesan Sekarang
                 </a>
             </div>
@@ -125,7 +126,7 @@
                     <a href="game/" class="px-4 py-3 rounded-xl hover:bg-stone-50 font-medium transition-colors">Mini
                         Game</a>
                     <a href="https://wa.me/6288808620330?text=Mau+pesen+mie+ayam"
-                        class="bg-amber-600 text-white text-center py-4 rounded-xl font-bold mt-2 shadow-lg shadow-amber-600/20">
+                        class="bg-amber-700 text-white text-center py-4 rounded-xl font-bold mt-2 shadow-lg shadow-amber-700/20">
                         Pesan Sekarang
                     </a>
                 </div>
@@ -180,7 +181,8 @@
                         class="relative aspect-square rounded-[2rem] overflow-hidden rotate-2 hover:rotate-0 transition-transform duration-500 shadow-2xl">
                         <img src="assets/img/hero.webp" alt="Mie Ayam Pak Dul" width="637" height="637"
                             fetchpriority="high" decoding="async"
-                            class="w-full h-full object-cover scale-110 hover:scale-100 transition-transform duration-700">
+                            class="w-full h-full object-cover scale-110 hover:scale-100 transition-transform duration-700"
+                            style="image-rendering: -webkit-optimize-contrast;">
                     </div>
                     <div
                         class="absolute -bottom-2 -left-2 md:-bottom-6 md:-left-6 bg-white p-2 md:p-4 rounded-2xl shadow-xl border border-stone-100 z-10">
@@ -309,7 +311,7 @@
                             <p class="text-stone-500 text-sm leading-relaxed">Mie kenyal dengan topping ayam berbumbu,
                                 daun bawang, dan kuah gurih khas Pak Dul.</p>
                             <a href="https://wa.me/6288808620330?text=Mau+pesen+Mie+Ayam+Original"
-                                class="block w-full text-center py-3 bg-white border border-stone-200 rounded-xl font-bold group-hover:bg-amber-600 group-hover:text-white group-hover:border-amber-600 transition-all">
+                                class="block w-full text-center py-3 bg-white border border-stone-200 rounded-xl font-bold group-hover:bg-amber-700 group-hover:text-white group-hover:border-amber-700 transition-all">
                                 Pilih Menu
                             </a>
                         </div>
@@ -331,7 +333,7 @@
                             <p class="text-stone-500 text-sm leading-relaxed">Pangsit kering gurih bertemu dengan kuah
                                 nikmat bgt!</p>
                             <a href="https://wa.me/6288808620330?text=Mau+pesen+Mie+Ayam+Pangsit"
-                                class="block w-full text-center py-3 bg-white border border-stone-200 rounded-xl font-bold group-hover:bg-amber-600 group-hover:text-white group-hover:border-amber-600 transition-all">
+                                class="block w-full text-center py-3 bg-white border border-stone-200 rounded-xl font-bold group-hover:bg-amber-700 group-hover:text-white group-hover:border-amber-700 transition-all">
                                 Pilih Menu
                             </a>
                         </div>
@@ -353,7 +355,7 @@
                             <p class="text-stone-500 text-sm leading-relaxed">Ceker empuk atau balungan gurih jadi teman
                                 mie yang sempurna. Bikin nagih terus.</p>
                             <a href="https://wa.me/6288808620330?text=Mau+pesen+Mie+Ayam+Ceker"
-                                class="block w-full text-center py-3 bg-white border border-stone-200 rounded-xl font-bold group-hover:bg-amber-600 group-hover:text-white group-hover:border-amber-600 transition-all">
+                                class="block w-full text-center py-3 bg-white border border-stone-200 rounded-xl font-bold group-hover:bg-amber-700 group-hover:text-white group-hover:border-amber-700 transition-all">
                                 Pilih Menu
                             </a>
                         </div>
@@ -375,7 +377,7 @@
                             <p class="text-stone-500 text-sm leading-relaxed">Sensasi makan mie ayam dengan balungan
                                 yang enak dan gurih.</p>
                             <a href="https://wa.me/6288808620330?text=Mau+pesen+Mie+Ayam+Balungan"
-                                class="block w-full text-center py-3 bg-white border border-stone-200 rounded-xl font-bold group-hover:bg-amber-600 group-hover:text-white group-hover:border-amber-600 transition-all">
+                                class="block w-full text-center py-3 bg-white border border-stone-200 rounded-xl font-bold group-hover:bg-amber-700 group-hover:text-white group-hover:border-amber-700 transition-all">
                                 Pilih Menu
                             </a>
                         </div>
@@ -399,20 +401,20 @@
                         </div>
                         <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
                             <a href="https://api.whatsapp.com/send?phone=628176574545&text=Order+Mie+Ayam+Pak+Dul"
-                                class="p-3 bg-white rounded-xl border border-amber-200 text-center font-bold text-xs hover:bg-amber-600 hover:text-white transition-all">ITE
+                                class="p-3 bg-white rounded-xl border border-amber-200 text-center font-bold text-xs hover:bg-amber-700 hover:text-white transition-all">ITE
                                 JEK</a>
                             <a href="https://api.whatsapp.com/send?phone=6282113815160&text=Order+Mie+Ayam+Pak+Dul"
-                                class="p-3 bg-white rounded-xl border border-amber-200 text-center font-bold text-xs hover:bg-amber-600 hover:text-white transition-all">SPIN
+                                class="p-3 bg-white rounded-xl border border-amber-200 text-center font-bold text-xs hover:bg-amber-700 hover:text-white transition-all">SPIN
                                 BIKE</a>
                             <a href="https://api.whatsapp.com/send?phone=6282328014991&text=Order+Mie+Ayam+Pak+Dul"
-                                class="p-3 bg-white rounded-xl border border-amber-200 text-center font-bold text-xs hover:bg-amber-600 hover:text-white transition-all">FAST
+                                class="p-3 bg-white rounded-xl border border-amber-200 text-center font-bold text-xs hover:bg-amber-700 hover:text-white transition-all">FAST
                                 ON</a>
                             <a href="https://api.whatsapp.com/send?phone=6282195943733&text=Order+Mie+Ayam+Pak+Dul"
-                                class="p-3 bg-white rounded-xl border border-amber-200 text-center font-bold text-xs hover:bg-amber-600 hover:text-white transition-all">AVES</a>
+                                class="p-3 bg-white rounded-xl border border-amber-200 text-center font-bold text-xs hover:bg-amber-700 hover:text-white transition-all">AVES</a>
                             <a href="https://api.whatsapp.com/send?phone=6285800782914&text=Order+Mie+Ayam+Pak+Dul"
-                                class="p-3 bg-white rounded-xl border border-amber-200 text-center font-bold text-xs hover:bg-amber-600 hover:text-white transition-all">BANTER</a>
+                                class="p-3 bg-white rounded-xl border border-amber-200 text-center font-bold text-xs hover:bg-amber-700 hover:text-white transition-all">BANTER</a>
                             <a href="https://linktr.ee/mieayam.pakdul"
-                                class="p-3 bg-amber-600 text-white rounded-xl text-center font-bold text-xs hover:bg-amber-700 transition-all">LIHAT
+                                class="p-3 bg-amber-700 text-white rounded-xl text-center font-bold text-xs hover:bg-amber-800 transition-all">LIHAT
                                 SEMUA</a>
                         </div>
                     </div>
@@ -420,7 +422,7 @@
                         <div id="stall-slider" class="absolute inset-0">
                             <img src="assets/img/exterior-new.webp" alt="Mie Ayam Pak Dul Stall 1"
                                 class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100 active-slide"
-                                decoding="async">
+                                decoding="async" loading="lazy">
                             <img src="assets/img/slider/1.webp" alt="Mie Ayam Pak Dul Stall 2"
                                 class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0"
                                 loading="lazy" decoding="async">
@@ -481,7 +483,7 @@
                 <p class="text-stone-400 text-lg">Main Mini Game seru! Hindari topping yang nggak kamu suka dan raih
                     skor tertinggi langsung di browser.</p>
                 <a href="game/"
-                    class="inline-block px-10 py-5 bg-amber-600 text-white rounded-2xl font-black text-xl hover:bg-amber-700 transition-all hover:scale-105 active:scale-95 shadow-xl shadow-amber-600/20">
+                    class="inline-block px-10 py-5 bg-amber-700 text-white rounded-2xl font-black text-xl hover:bg-amber-800 transition-all hover:scale-105 active:scale-95 shadow-xl shadow-amber-700/20">
                     Main Sekarang — Gratis!
                 </a>
             </div>
