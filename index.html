@@ -10,7 +10,7 @@
     <meta name="description"
         content="Mie ayam enak di Bumiayu mulai 12K. Bisa dine-in & delivery. Buka jam 11 Pagi sampai habis!">
     <meta name="keywords"
-        content="mie ayam bumiayu, mie ayam pak dul, kuliner bumiayu, mie ayam legendaris, mie ayam enak kabuyutan, bakso bumiayu, delivery mie ayam">
+        content="mie ayam bumiayu, mie ayam pak dul, kuliner bumiayu, mie ayam legendaris, bakso bumiayu, delivery mie ayam">
     <meta name="author" content="Mie Ayam Pak Dul">
 
     <!-- Open Graph / Facebook -->
@@ -18,8 +18,8 @@
     <meta property="og:url" content="https://mieayam.pakdul.in/">
     <meta property="og:title" content="Mie Ayam Pak Dul Bumiayu – Enak, Murah, Bikin Nagih">
     <meta property="og:description"
-        content="Mie ayam enak di Bumiayu mulai 12K. Bisa dine-in & delivery. Buka jam 11 Pagi sampai habis!">
-    <meta property="og:image" content="assets/img/hero.webp">
+        content="Nikmati Mie ayam enak di Bumiayu mulai 12K. Bisa dine-in & delivery. Buka jam 11 Pagi sampai habis!">
+    <meta property="og:image" content="https://mieayam.pakdul.in/assets/img/og-preview.webp">
 
     <!-- Favicons -->
     <link rel="icon" type="image/webp" href="assets/img/logo-nav.webp">
@@ -32,11 +32,11 @@
       "@context": "https://schema.org",
       "@type": "FoodEstablishment",
       "name": "Mie Ayam Pak Dul",
-      "image": "https://mieayam.pakdul.in/assets/img/hero.webp",
+      "image": "https://mieayam.pakdul.in/assets/img/og-preview.webp",
       "@id": "https://mieayam.pakdul.in/",
       "url": "https://mieayam.pakdul.in/",
       "telephone": "+6288808620330",
-      "priceRange": "Rp 12.000 - Rp 15.000",
+      "priceRange": "Rp 12.000 - Rp 14.000",
       "menu": "https://mieayam.pakdul.in/#menu",
       "servesCuisine": "Indonesian",
       "address": {
@@ -49,8 +49,8 @@
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": -7.2345,
-        "longitude": 109.0123
+        "latitude": -7.2448473,
+        "longitude": 109.0085289
       },
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
@@ -416,11 +416,16 @@
                                 SEMUA</a>
                         </div>
                     </div>
-                    <div class="relative group">
-                        <img src="assets/img/exterior-new.webp" alt="Ojek Online Bumiayu" width="637" height="358"
-                            class="rounded-[2.5rem] shadow-2xl transition-all duration-700 group-hover:scale-[1.02]">
+                    <div class="relative group aspect-[16/9] overflow-hidden rounded-[2.5rem] shadow-2xl">
+                        <div id="stall-slider" class="absolute inset-0">
+                            <img src="assets/img/exterior-new.webp" alt="Mie Ayam Pak Dul Stall 1" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100 active-slide">
+                            <img src="assets/img/slider/1.webp" alt="Mie Ayam Pak Dul Stall 2" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0">
+                            <img src="assets/img/slider/2.webp" alt="Mie Ayam Pak Dul Stall 3" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0">
+                            <img src="assets/img/slider/3.webp" alt="Mie Ayam Pak Dul Stall 4" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0">
+                            <img src="assets/img/slider/4.webp" alt="Mie Ayam Pak Dul Stall 5" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0">
+                        </div>
                         <div
-                            class="absolute -bottom-2 -right-2 md:-bottom-6 md:-right-6 bg-white p-3 md:p-6 rounded-2xl shadow-xl border border-amber-100 max-w-[140px] md:max-w-[200px]">
+                            class="absolute -bottom-2 -right-2 md:-bottom-6 md:-right-6 bg-white p-3 md:p-6 rounded-2xl shadow-xl border border-amber-100 max-w-[140px] md:max-w-[200px] z-10 transition-transform duration-700 group-hover:scale-105">
                             <p class="text-[10px] md:text-sm font-bold text-stone-900 leading-tight">Hangat & Cepat
                                 Sampai ke Rumah.</p>
                         </div>
@@ -605,6 +610,20 @@
                 }
             });
         });
+
+        // Stall Image Slider Logic
+        const sliderImages = document.querySelectorAll('#stall-slider img');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            sliderImages[currentSlide].classList.replace('opacity-100', 'opacity-0');
+            currentSlide = (currentSlide + 1) % sliderImages.length;
+            sliderImages[currentSlide].classList.replace('opacity-0', 'opacity-100');
+        }
+
+        if (sliderImages.length > 1) {
+            setInterval(nextSlide, 3000); // Change image every 3 seconds
+        }
     </script>
 </body>
 
