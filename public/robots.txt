@@ -1,33 +1,79 @@
 User-agent: *
 Allow: /
 
-# Explicitly allow major search engines
+# Search Engines
 User-agent: Googlebot
 Allow: /
 User-agent: Bingbot
 Allow: /
 User-agent: DuckDuckBot
 Allow: /
+User-agent: DuckAssistBot
+Allow: /
 User-agent: Slurp
 Allow: /
 User-agent: Applebot
 Allow: /
-
-# Allow AI crawlers explicitly
-User-agent: GPTBot
+User-agent: archive.org_bot
 Allow: /
+
+# AI Crawlers & Assistants (OpenAI, Anthropic, etc.)
 User-agent: ChatGPT-User
 Allow: /
-User-agent: Google-Extended
+User-agent: GPTBot
 Allow: /
-User-agent: CCBot
+User-agent: OAI-SearchBot
 Allow: /
-User-agent: Anthropic-AI
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-User
+Allow: /
+User-agent: Claude-SearchBot
 Allow: /
 User-agent: PerplexityBot
 Allow: /
+User-agent: Perplexity-User
+Allow: /
+User-agent: CCBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Google-CloudVertexBot
+Allow: /
 
-# Block Common Blackhat/SEO/Scraper Bots
+# Social Media & Tech AI Crawlers
+User-agent: FacebookBot
+Allow: /
+User-agent: Meta-ExternalAgent
+Allow: /
+User-agent: Meta-ExternalFetcher
+Allow: /
+User-agent: Amazonbot
+Allow: /
+User-agent: Bytespider
+Allow: /
+User-agent: PetalBot
+Allow: /
+User-agent: MistralAI-User
+Allow: /
+
+# Other Specialized AI & Search Bots
+User-agent: AnchorBrowser
+Allow: /
+User-agent: ManusBot
+Allow: /
+User-agent: NovellumAI-Crawl
+Allow: /
+User-agent: ProRataInc
+Allow: /
+User-agent: TerracottaBot
+Allow: /
+User-agent: Timpibot
+Allow: /
+User-agent: Cloudflare-Crawler
+Allow: /
+
+# Explicitly Block Aggressive SEO/Scraper Bots
 User-agent: AhrefsBot
 Disallow: /
 User-agent: SemrushBot
@@ -39,8 +85,6 @@ Disallow: /
 User-agent: Rogerbot
 Disallow: /
 User-agent: Exabot
-Disallow: /
-User-agent: PetalBot
 Disallow: /
 User-agent: MegaIndex.ru
 Disallow: /
