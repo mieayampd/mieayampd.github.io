@@ -98,9 +98,10 @@ async function renderPages(posts) {
     const template = await fs.readFile(TEMPLATE_PATH, 'utf-8');
 
     for (const post of posts) {
-        const absoluteImageUrl = (post.image && post.image.startsWith('http')) 
-            ? post.image 
-            : `https://mieayam.pakdul.in${post.image || '/assets/img/og-preview.webp'}`;
+        const relativeImagePath = post.image || '/assets/img/og-preview.webp';
+        const absoluteImageUrl = (relativeImagePath.startsWith('http')) 
+            ? relativeImagePath 
+            : `https://mieayam.pakdul.in${relativeImagePath}`;
 
         let html = template
             .replace(/{{title}}/g, post.title)
@@ -110,7 +111,8 @@ async function renderPages(posts) {
             .replace(/{{slug}}/g, post.slug)
             .replace(/{{readingTime}}/g, post.readingTime)
             .replace(/{{category}}/g, post.category || 'Berita')
-            .replace(/{{image}}/g, absoluteImageUrl);
+            .replace(/{{ogImage}}/g, absoluteImageUrl)
+            .replace(/{{image}}/g, relativeImagePath);
 
         const postDir = path.join(BLOG_OUTPUT_DIR, post.slug);
         await fs.ensureDir(postDir);

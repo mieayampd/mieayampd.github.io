@@ -139,9 +139,6 @@
     <!-- Scripts for Search & Pagination -->
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
     <script type="module">
-        // Vite's magic to handle dynamic assets
-        const imageMap = import.meta.glob('/assets/img/*.{webp,jpg,png,jpeg}', { query: '?url', import: 'default', eager: true });
-
         let allPosts = [];
         let fuse;
         const postsPerPage = 6;
@@ -222,10 +219,8 @@
             const paginatedPosts = data.slice(start, end);
 
             grid.innerHTML = paginatedPosts.map(post => {
-                // Resolve image: use directly if full URL, else use Vite map
-                const imageUrl = (post.image && post.image.startsWith('http')) 
-                    ? post.image 
-                    : (imageMap[post.image] || post.image);
+                // Since images are in public folder, we use paths directly
+                const imageUrl = post.image || '../assets/img/og-preview.webp';
                 
                 return `
                 <article class="group bg-white rounded-[2.5rem] overflow-hidden border border-stone-100 hover:border-amber-200 hover:shadow-2xl transition-all duration-500 flex flex-col">
