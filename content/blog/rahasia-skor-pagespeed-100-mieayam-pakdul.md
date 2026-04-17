@@ -38,4 +38,3 @@ Berikut adalah sumber daya teknis yang kami gunakan sebagai rujukan:
 4. **Fuse.js**: [Teknologi Pencarian Ringan](https://www.fusejs.io/)
 
 ---
-*Optimasi ini adalah bukti bahwa warung Mie Ayam pun bisa punya standar teknologi kelas dunia.* 🍜🚀

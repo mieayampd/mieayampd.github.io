@@ -317,6 +317,40 @@
             });
         }
 
+        // --- NAVBAR SCROLL LOGIC (Synced with index.html) ---
+        const navbar = document.getElementById('navbar');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+
+            // 1. Shrink navbar and update background
+            const isScrolled = currentScrollY > 50;
+            navbar.classList.toggle('py-2', isScrolled);
+
+            const navContainer = navbar.querySelector('div');
+            if (isScrolled) {
+                navContainer.classList.remove('bg-white/70');
+                navContainer.classList.add('bg-white/95', 'shadow-lg');
+            } else {
+                navContainer.classList.add('bg-white/70');
+                navContainer.classList.remove('bg-white/95', 'shadow-lg');
+            }
+
+            // 2. Hide on Scroll Down, Show on Scroll Up
+            // Hide if scrolling down and past 300px
+            if (currentScrollY > lastScrollY && currentScrollY > 300) {
+                navbar.classList.add('-translate-y-[120%]', 'opacity-0');
+            }
+            // Show if scrolling up
+            else if (currentScrollY < lastScrollY) {
+                navbar.classList.remove('-translate-y-[120%]', 'opacity-0');
+            }
+
+            lastScrollY = currentScrollY;
+        }, { passive: true });
+
+        // Initialize Blog
         initBlog();
     </script>
 </body>
