@@ -222,8 +222,10 @@
             const paginatedPosts = data.slice(start, end);
 
             grid.innerHTML = paginatedPosts.map(post => {
-                // Resolve hashed path from Vite map
-                const imageUrl = imageMap[post.image] || post.image;
+                // Resolve image: use directly if full URL, else use Vite map
+                const imageUrl = (post.image && post.image.startsWith('http')) 
+                    ? post.image 
+                    : (imageMap[post.image] || post.image);
                 
                 return `
                 <article class="group bg-white rounded-[2.5rem] overflow-hidden border border-stone-100 hover:border-amber-200 hover:shadow-2xl transition-all duration-500 flex flex-col">
