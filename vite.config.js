@@ -96,6 +96,7 @@ export default defineConfig({
         'main': './index.html',
         'game': './game/index.html',
         'blog': './blog/index.html',
+        'blog-bagaimana-situs-kami-mencapai-skor-pagespeed-100percent': './blog/bagaimana-situs-kami-mencapai-skor-pagespeed-100percent/index.html',
         'blog-sekilas-tentang-mie-ayam-pak-dul': './blog/sekilas-tentang-mie-ayam-pak-dul/index.html'
       }
       /* MABE_INPUTS_END */
