@@ -122,22 +122,37 @@ async function renderPages(posts) {
 }
 
 async function updateSitemap(posts) {
-    let sitemap = await fs.readFile(SITEMAP_PATH, 'utf-8');
-    
-    // Remove existing blog urls to prevent duplicates
-    const regex = /<url>\s*<loc>https:\/\/mieayam\.pakdul\.in\/blog\/.*?<\/url>/gs;
-    sitemap = sitemap.replace(regex, '');
+    console.log('📝 Updating Sitemap...');
+    const baseUrl = 'https://mieayam.pakdul.in';
+    const today = new Date().toISOString().split('T')[0];
 
-    const blogUrls = posts.map(post => `  <url>
-    <loc>https://mieayam.pakdul.in/blog/${post.slug}/</loc>
-    <lastmod>${post.date}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>`).join('\n');
+    // Core pages that should always be there
+    const corePages = [
+        { loc: `${baseUrl}/`, lastmod: today, changefreq: 'weekly', priority: '1.0' },
+        { loc: `${baseUrl}/game/`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
+        { loc: `${baseUrl}/blog/`, lastmod: today, changefreq: 'weekly', priority: '0.9' }
+    ];
 
-    // Insert before closing urlset
-    sitemap = sitemap.replace('</urlset>', `${blogUrls}\n</urlset>`);
-    await fs.writeFile(SITEMAP_PATH, sitemap);
+    const blogPages = posts.map(post => ({
+        loc: `${baseUrl}/blog/${post.slug}/`,
+        lastmod: post.date,
+        changefreq: 'monthly',
+        priority: '0.7'
+    }));
+
+    const allPages = [...corePages, ...blogPages];
+
+    const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${allPages.map(page => `  <url>
+    <loc>${page.loc}</loc>
+    <lastmod>${page.lastmod}</lastmod>
+    <changefreq>${page.changefreq}</changefreq>
+    <priority>${page.priority}</priority>
+  </url>`).join('\n')}
+</urlset>`;
+
+    await fs.writeFile(SITEMAP_PATH, sitemapContent.trim() + '\n');
 }
 
 async function updateViteConfig(inputs) {
