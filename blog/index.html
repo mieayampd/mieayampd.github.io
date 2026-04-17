@@ -19,7 +19,7 @@
     <meta property="og:title" content="Jurnal Rasa – Mie Ayam Pak Dul">
     <meta property="og:description"
         content="Pusat informasi, cerita di balik layar, tips kuliner, teknologi dan update terbaru dari Jurnal Rasa Mie Ayam Pak Dul.">
-    <meta property="og:image" content="https://mieayam.pakdul.in/assets/img/og-preview.webp">
+    <meta property="og:image" content="../assets/img/logo-nav.webp">
 
     <link rel="canonical" href="https://mieayam.pakdul.in/blog/">
 
@@ -138,7 +138,10 @@
 
     <!-- Scripts for Search & Pagination -->
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
-    <script>
+    <script type="module">
+        // Vite's magic to handle dynamic assets
+        const imageMap = import.meta.glob('/assets/img/*.{webp,jpg,png,jpeg}', { query: '?url', import: 'default', eager: true });
+
         let allPosts = [];
         let fuse;
         const postsPerPage = 6;
@@ -218,10 +221,14 @@
             const end = start + postsPerPage;
             const paginatedPosts = data.slice(start, end);
 
-            grid.innerHTML = paginatedPosts.map(post => `
+            grid.innerHTML = paginatedPosts.map(post => {
+                // Resolve hashed path from Vite map
+                const imageUrl = imageMap[post.image] || post.image;
+                
+                return `
                 <article class="group bg-white rounded-[2.5rem] overflow-hidden border border-stone-100 hover:border-amber-200 hover:shadow-2xl transition-all duration-500 flex flex-col">
                     <div class="aspect-[16/10] overflow-hidden relative">
-                        <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <img src="${imageUrl}" alt="${post.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                         <div class="absolute top-4 left-4">
                             <span class="bg-amber-600 text-white text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full shadow-lg">
                                 ${post.category || 'Berita'}
@@ -246,7 +253,7 @@
                         </a>
                     </div>
                 </article>
-            `).join('');
+            `}).join('');
 
             if (!filtered) renderPagination(data.length);
         }
@@ -285,15 +292,17 @@
 
                 const searchResults = fuse.search(query).slice(0, 5);
                 if (searchResults.length > 0) {
-                    results.innerHTML = searchResults.map(res => `
+                    results.innerHTML = searchResults.map(res => {
+                        const imageUrl = imageMap[res.item.image] || res.item.image;
+                        return `
                         <a href="${res.item.slug}/" class="flex items-center gap-4 p-4 hover:bg-stone-50 transition-colors border-b border-stone-100 last:border-0">
-                            <img src="${res.item.image}" class="w-12 h-12 object-cover rounded-lg">
+                            <img src="${imageUrl}" class="w-12 h-12 object-cover rounded-lg">
                             <div>
                                 <p class="text-sm font-bold text-stone-900 line-clamp-1">${res.item.title}</p>
                                 <p class="text-[10px] text-stone-500 uppercase font-mono tracking-widest">${res.item.date}</p>
                             </div>
                         </a>
-                    `).join('');
+                    `}).join('');
                     results.classList.remove('hidden');
                 } else {
                     results.innerHTML = '<div class="p-4 text-xs text-stone-400 italic">Artikel tidak ditemukan...</div>';

@@ -48,6 +48,11 @@ async function generateBlog() {
             const imgMatch = htmlBody.match(/<img[^>]+src="([^">]+)"/);
             featuredImage = imgMatch ? imgMatch[1] : '/assets/img/og-preview.webp';
         }
+
+        // Ensure path starts with /
+        if (featuredImage && !featuredImage.startsWith('/') && !featuredImage.startsWith('http')) {
+            featuredImage = '/' + featuredImage;
+        }
         
         // Calculate reading time
         const wordsPerMinute = 200;
