@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jurnal Rasa – Mie Ayam Pak Dul</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Pusat informasi, cerita di balik layar, tips kuliner, teknologi dan update terbaru dari Jurnal Rasa Mie Ayam Pak Dul.">
+    <meta name="keywords"
+        content="jurnal rasa, blog kuliner, tips masak, teknologi warung, mie ayam bumiayu, update pak dul">
+    <meta name="author" content="Mie Ayam Pak Dul">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mieayam.pakdul.in/blog/">
+    <meta property="og:title" content="Jurnal Rasa – Mie Ayam Pak Dul">
+    <meta property="og:description"
+        content="Pusat informasi, cerita di balik layar, tips kuliner, teknologi dan update terbaru dari Jurnal Rasa Mie Ayam Pak Dul.">
+    <meta property="og:image" content="https://mieayam.pakdul.in/assets/img/og-preview.webp">
+
+    <link rel="canonical" href="https://mieayam.pakdul.in/blog/">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/webp" href="../assets/img/logo-nav.webp">
+    <meta name="theme-color" content="#d97706">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../tailwind.css">
+
+    <!-- Fonts -->
+    <link rel="preload" href="../assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../assets/fonts/playfair-display.woff2" as="font" type="font/woff2" crossorigin>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .active-filter {
+            color: #d97706;
+            font-weight: 800;
+            border-bottom: 2px solid #d97706;
+        }
+    </style>
+</head>
+
+<body class="bg-stone-50 text-stone-900 selection:bg-orange-200">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 px-6 py-4">
+        <div
+            class="max-w-7xl mx-auto flex items-center justify-between bg-white/70 backdrop-blur-md rounded-2xl px-6 py-3 border border-stone-200 shadow-sm">
+            <a href="/" class="flex items-center gap-3">
+                <img src="../assets/img/logo-nav.webp" alt="Logo" class="w-10 h-10 object-contain">
+                <span class="font-display text-xl font-bold tracking-tight">Mie Ayam Pak Dul</span>
+            </a>
+            <div
+                class="hidden lg:flex items-center gap-6 font-medium text-sm text-stone-600 uppercase tracking-widest font-mono font-bold">
+                <a href="/" class="hover:text-amber-600 transition-colors">Beranda</a>
+                <a href="/blog/" class="text-amber-600">Blog</a>
+                <a href="#categories" class="hover:text-amber-600 transition-colors">Category</a>
+                <a href="#archive" class="hover:text-amber-600 transition-colors">Archive</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- Header Section -->
+            <div class="text-center mb-16 space-y-6">
+                <h1 class="text-5xl md:text-7xl font-display font-black tracking-tight">Jurnal <span
+                        class="text-amber-600 italic">Rasa.</span></h1>
+                <p class="text-stone-500 max-w-xl mx-auto text-lg leading-relaxed">Pusat informasi, cerita di balik
+                    layar,
+                    tips kuliner, teknologi dan update terbaru lain-nya.</p>
+
+                <!-- Search Bar -->
+                <div class="relative max-w-md mx-auto mt-8">
+                    <div class="group relative">
+                        <input type="text" id="blog-search" placeholder="Cari artikel..."
+                            class="w-full px-6 py-4 bg-white border border-stone-200 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-all">
+                        <div id="search-results"
+                            class="hidden absolute top-full left-0 w-full mt-2 bg-white border border-stone-200 rounded-2xl shadow-2xl z-50 overflow-hidden text-left">
+                            <!-- Search items go here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Section -->
+            <div id="categories" class="mb-12 border-b border-stone-100 pb-12">
+                <h3 class="text-xs font-mono font-bold text-stone-400 uppercase tracking-widest mb-6">Explore by
+                    Category</h3>
+                <div id="category-list" class="flex flex-wrap gap-3">
+                    <!-- Categories pills go here -->
+                </div>
+            </div>
+
+            <!-- Blog Grid -->
+            <div id="blog-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Posts will be injected here by JS -->
+            </div>
+
+            <!-- Pagination -->
+            <div id="pagination" class="flex justify-center items-center gap-2 mt-20">
+                <!-- Pagination buttons injected here -->
+            </div>
+
+            <!-- Archive Section -->
+            <div id="archive" class="mt-32 pt-20 border-t border-stone-200 text-center">
+                <h3 class="font-display text-4xl font-black mb-12 italic">Arsip <span
+                        class="text-amber-600">Cerita.</span></h3>
+                <div id="archive-list" class="flex flex-wrap justify-center gap-4">
+                    <!-- Years go here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer copied from index.html -->
+    <footer class="bg-white py-20 px-6 border-t border-stone-200">
+        <div class="max-w-7xl mx-auto text-center space-y-8">
+            <div class="flex justify-center items-center gap-3">
+                <img src="../assets/img/logo-nav.webp" alt="Logo" class="w-10 h-10 object-contain">
+                <span class="font-display text-2xl font-bold tracking-tight">Mie Ayam Pak Dul</span>
+            </div>
+            <p class="text-stone-500 max-w-md mx-auto">Masakan terbaik dari Bumiayu untuk dunia. Terimakasih telah
+                menjadi bagian dari perjalanan kami.</p>
+            <div
+                class="pt-8 border-t border-stone-100 text-xs font-mono font-bold text-stone-400 uppercase tracking-widest">
+                &copy; 2026 Mie Ayam Pak Dul. Semua hak dilindungi.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts for Search & Pagination -->
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+    <script>
+        let allPosts = [];
+        let fuse;
+        const postsPerPage = 6;
+        let currentPage = 1;
+
+        async function initBlog() {
+            try {
+                const response = await fetch('../blog-data.json');
+                allPosts = await response.json();
+
+                // Init Search
+                fuse = new Fuse(allPosts, {
+                    keys: ['title', 'description', 'category'],
+                    threshold: 0.4
+                });
+
+                // Populate Dropdowns
+                populateFilters();
+
+                renderPosts();
+                setupSearch();
+            } catch (err) {
+                console.error('Gagal memuat data blog:', err);
+            }
+        }
+
+        function populateFilters() {
+            const categories = [...new Set(allPosts.map(p => p.category || 'Berita'))];
+            const years = [...new Set(allPosts.map(p => new Date(p.date).getFullYear()))].sort((a, b) => b - a);
+
+            const catList = document.getElementById('category-list');
+            catList.innerHTML = `
+                <button onclick="filterByCategory('', this)" class="filter-btn active-filter px-6 py-2 rounded-full border border-stone-200 text-xs font-bold uppercase transition-all hover:border-amber-500">All Categories</button>
+            ` + categories.map(cat => `
+                <button onclick="filterByCategory('${cat}', this)" class="filter-btn px-6 py-2 rounded-full border border-stone-200 text-xs font-bold uppercase transition-all hover:border-amber-500">${cat}</button>
+            `).join('');
+
+            const archList = document.getElementById('archive-list');
+            archList.innerHTML = years.map(year => `
+                <button onclick="filterByYear('${year}', this)" class="archive-btn px-8 py-4 bg-white border border-stone-200 rounded-2xl text-lg font-bold hover:border-amber-500 hover:text-amber-600 transition-all shadow-sm">${year}</button>
+            `).join('');
+        }
+
+        window.filterByCategory = (cat, btn) => {
+            currentPage = 1;
+
+            // UI Toggle
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active-filter'));
+            if (btn) btn.classList.add('active-filter');
+
+            if (!cat) renderPosts();
+            else {
+                const filtered = allPosts.filter(p => (p.category || 'Berita') === cat);
+                renderPosts(filtered);
+            }
+        };
+
+        window.filterByYear = (year, btn) => {
+            currentPage = 1;
+
+            // UI Toggle
+            document.querySelectorAll('.archive-btn').forEach(b => b.classList.remove('border-amber-500', 'text-amber-600', 'ring-2', 'ring-amber-500/20'));
+            if (btn) btn.classList.add('border-amber-500', 'text-amber-600', 'ring-2', 'ring-amber-500/20');
+
+            if (!year) renderPosts();
+            else {
+                const filtered = allPosts.filter(p => new Date(p.date).getFullYear().toString() === year.toString());
+                renderPosts(filtered);
+            }
+        };
+
+        function renderPosts(filtered = null) {
+            const grid = document.getElementById('blog-grid');
+            const data = filtered || allPosts;
+
+            const start = (currentPage - 1) * postsPerPage;
+            const end = start + postsPerPage;
+            const paginatedPosts = data.slice(start, end);
+
+            grid.innerHTML = paginatedPosts.map(post => `
+                <article class="group bg-white rounded-[2.5rem] overflow-hidden border border-stone-100 hover:border-amber-200 hover:shadow-2xl transition-all duration-500 flex flex-col">
+                    <div class="aspect-[16/10] overflow-hidden relative">
+                        <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-amber-600 text-white text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full shadow-lg">
+                                ${post.category || 'Berita'}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-8 space-y-4 flex-grow">
+                        <div class="flex items-center gap-4 text-[10px] font-mono font-bold text-stone-400 uppercase tracking-widest">
+                            <span>${post.date}</span>
+                            <span class="w-1 h-1 bg-stone-300 rounded-full"></span>
+                            <span>${post.readingTime}</span>
+                        </div>
+                        <h2 class="text-2xl font-display font-extrabold leading-tight">
+                            <a href="${post.slug}/" class="hover:text-amber-600 transition-colors">${post.title}</a>
+                        </h2>
+                        <p class="text-stone-500 text-sm leading-relaxed line-clamp-3">${post.description}</p>
+                    </div>
+                    <div class="px-8 pb-8">
+                        <a href="${post.slug}/" class="inline-flex items-center gap-2 text-sm font-bold text-stone-900 hover:gap-3 transition-all">
+                            Baca Selengkapnya
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                    </div>
+                </article>
+            `).join('');
+
+            if (!filtered) renderPagination(data.length);
+        }
+
+        function renderPagination(total) {
+            const totalPages = Math.ceil(total / postsPerPage);
+            const container = document.getElementById('pagination');
+
+            let html = '';
+            for (let i = 1; i <= totalPages; i++) {
+                html += `
+                    <button onclick="changePage(${i})" class="w-10 h-10 rounded-xl font-bold transition-all ${currentPage === i ? 'bg-amber-600 text-white' : 'bg-white border border-stone-200 text-stone-600 hover:bg-stone-50'}">
+                        ${i}
+                    </button>
+                `;
+            }
+            container.innerHTML = html;
+        }
+
+        window.changePage = (page) => {
+            currentPage = page;
+            renderPosts();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        function setupSearch() {
+            const input = document.getElementById('blog-search');
+            const results = document.getElementById('search-results');
+
+            input.addEventListener('input', (e) => {
+                const query = e.target.value;
+                if (!query) {
+                    results.classList.add('hidden');
+                    return;
+                }
+
+                const searchResults = fuse.search(query).slice(0, 5);
+                if (searchResults.length > 0) {
+                    results.innerHTML = searchResults.map(res => `
+                        <a href="${res.item.slug}/" class="flex items-center gap-4 p-4 hover:bg-stone-50 transition-colors border-b border-stone-100 last:border-0">
+                            <img src="${res.item.image}" class="w-12 h-12 object-cover rounded-lg">
+                            <div>
+                                <p class="text-sm font-bold text-stone-900 line-clamp-1">${res.item.title}</p>
+                                <p class="text-[10px] text-stone-500 uppercase font-mono tracking-widest">${res.item.date}</p>
+                            </div>
+                        </a>
+                    `).join('');
+                    results.classList.remove('hidden');
+                } else {
+                    results.innerHTML = '<div class="p-4 text-xs text-stone-400 italic">Artikel tidak ditemukan...</div>';
+                    results.classList.remove('hidden');
+                }
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!results.contains(e.target) && e.target !== input) {
+                    results.classList.add('hidden');
+                }
+            });
+        }
+
+        initBlog();
+    </script>
+</body>
+
+</html>

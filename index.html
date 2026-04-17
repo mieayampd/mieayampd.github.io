@@ -66,7 +66,9 @@
 
     <!-- Stylesheets -->
     <link rel="preload" href="./tailwind.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="./tailwind.css"></noscript>
+    <noscript>
+        <link rel="stylesheet" href="./tailwind.css">
+    </noscript>
 
     <!-- Speed Optimizations -->
     <link rel="preconnect" href="https://maps.googleapis.com">
@@ -515,6 +517,8 @@
                 <p class="text-stone-600 text-sm">Karangtuang RT 5 RW 4, Bumiayu, Jawa Tengah 52273</p>
             </div>
             <div class="flex flex-wrap gap-4 md:justify-end">
+                <a href="blog/"
+                    class="px-6 py-3 bg-white border border-stone-200 rounded-xl font-bold hover:bg-amber-700 hover:text-white transition-all">Blog</a>
                 <a href="https://www.tiktok.com/@mieayam.pakdul"
                     class="px-6 py-3 bg-white border border-stone-200 rounded-xl font-bold hover:bg-amber-700 hover:text-white transition-all">TikTok</a>
                 <a href="https://www.instagram.com/mieayam.pakdul"
@@ -581,7 +585,7 @@
             // 1. Shrink navbar and update background
             const isScrolled = currentScrollY > 50;
             navbar.classList.toggle('py-2', isScrolled);
-            
+
             const navContainer = navbar.querySelector('div');
             if (isScrolled) {
                 navContainer.classList.remove('bg-white/70');
@@ -597,7 +601,7 @@
                 // Hide if scrolling down and past 300px
                 if (currentScrollY > lastScrollY && currentScrollY > 300) {
                     navbar.classList.add('-translate-y-[120%]', 'opacity-0');
-                } 
+                }
                 // Show if scrolling up
                 else if (currentScrollY < lastScrollY) {
                     navbar.classList.remove('-translate-y-[120%]', 'opacity-0');

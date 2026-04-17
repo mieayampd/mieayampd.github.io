@@ -40,3 +40,12 @@ desktop.ini
 
 # Vite
 .vite/
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Generated Blog Content
+blog/*/
+public/blog-data.json

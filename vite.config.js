@@ -1,10 +1,42 @@
 import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
+import { exec } from 'child_process';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Custom Plugin for Blog Generation
+const blogWatcher = () => ({
+  name: 'blog-watcher',
+  configureServer(server) {
+    const runGen = () => {
+      exec('node scripts/blog-gen.js', (err, stdout, stderr) => {
+        if (err) console.error('Blog Gen Error:', err);
+        if (stdout) console.log('Blog Gen:', stdout.trim());
+        server.ws.send({ type: 'full-reload' });
+      });
+    };
+
+    server.watcher.add([
+      path.resolve(__dirname, 'content/blog/*.md'),
+      path.resolve(__dirname, 'blog/template.html')
+    ]);
+    
+    server.watcher.on('change', (file) => {
+      if (file.endsWith('.md') || file.endsWith('template.html')) {
+        runGen();
+      }
+    });
+  }
+});
 
 export default defineConfig({
   plugins: [
     tailwindcss(),
+    blogWatcher(),
     ViteImageOptimizer({
       test: /\.(jpe?g|png|gif|tiff|webp|svg|avif)$/i,
       exclude: undefined,
@@ -59,10 +91,14 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     rollupOptions: {
+      /* MABE_INPUTS_START */
       input: {
-        main: './index.html',
-        game: './game/index.html',
-      },
+        'main': './index.html',
+        'game': './game/index.html',
+        'blog': './blog/index.html',
+        'blog-sekilas-tentang-mie-ayam-pak-dul': './blog/sekilas-tentang-mie-ayam-pak-dul/index.html'
+      }
+      /* MABE_INPUTS_END */
     },
   },
 });
