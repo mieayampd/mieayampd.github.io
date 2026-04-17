@@ -41,8 +41,8 @@ desktop.ini
 # Vite
 .vite/
 
-# Lock files
-package-lock.json
+# Lock files (Commit these for consistent builds)
+# package-lock.json
 yarn.lock
 pnpm-lock.yaml
 
