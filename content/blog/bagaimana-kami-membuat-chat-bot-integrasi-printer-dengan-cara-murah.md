@@ -39,6 +39,24 @@ Di warung, terdapat sebuah ponsel Android lama yang terhubung ke printer thermal
 
 ![Analogi Sistem MieAI](/assets/img/blog-mieai-analogy.png)
 
+## Fitur Unggulan: Lebih dari Sekadar Bot Chat
+
+Banyak orang mengira ini hanyalah bot WhatsApp biasa. Namun, kekuatan utama **MieAI Engine** terletak pada kemampuannya mengolah data secara cerdas:
+
+### 1. Deteksi Pesanan Otomatis
+Sistem dilatih untuk mengenali berbagai format pesan pelanggan, mulai dari teks sopan ("Mas, pesan mie ayam komplit 2 ya") hingga bahasa yang sangat singkat. AI memastikan tidak ada item yang terlewat saat dikonversi menjadi pesanan resmi.
+
+### 2. Ekstraksi Catatan (Custom Requests)
+Inilah yang paling krusial di bisnis makanan. "Tanpa daun bawang," "Ceker dipisah," atau "Mie setengah matang" adalah catatan penting yang sering terabaikan. Sistem kami mampu mendeteksi kata-kata kunci ini dan menampilkannya sebagai **Catatan Khusus** yang akan tercetak jelas di struk untuk dibaca oleh Pak Dul.
+
+### 3. Rangkuman & Total Otomatis
+Admin tidak perlu lagi membuka kalkulator. Begitu pesanan dideteksi, sistem otomatis mengalikan jumlah item dengan harga terbaru dari database dan menjumlahkannya. Total biaya sudah tersedia seketika, lengkap dengan detail per item.
+
+### 4. Konversi Visual ke Fisik (Screenshot to Print)
+Fitur OCR (Optical Character Recognition) memungkinkan admin memproses pesanan ojek online (seperti Itjek, dll) hanya dengan meneruskan screenshot pesanan ke bot. Sistem akan membaca gambar tersebut, merangkumnya, dan mengirimkannya ke printer.
+
+![Fitur Cerdas MieAI](/assets/img/blog-mieai-features.png)
+
 ## Kenapa Cara Ini "Murah"?
 
 Kami tidak menggunakan platform CRM mahal. Rahasianya ada pada pemilihan stack:
@@ -53,6 +71,9 @@ Sejak implementasi sistem ini, kami merasakan perubahan signifikan:
 - **Nol Pesanan Terlewat**: Setiap pesan terdeteksi dan tercatat otomatis.
 - **Printer Jarak Jauh**: Admin bisa berada di mana saja sambil tetap memastikan dapur mencetak struk pesanan yang valid.
 - **Efisiensi Waktu**: Tidak ada lagi proses ketik ulang atau salah baca tulisan tangan.
+
+![Hasil Cetak Struk](/assets/img/result-printer.jpeg)
+
 
 ## Kesimpulan
 
