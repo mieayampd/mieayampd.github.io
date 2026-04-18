@@ -146,7 +146,7 @@
 
         async function initBlog() {
             try {
-                const response = await fetch('../blog-data.json');
+                const response = await fetch('/blog-data.json');
                 allPosts = await response.json();
 
                 // Init Search
@@ -290,7 +290,7 @@
                 const searchResults = fuse.search(query).slice(0, 5);
                 if (searchResults.length > 0) {
                     results.innerHTML = searchResults.map(res => {
-                        const imageUrl = imageMap[res.item.image] || res.item.image;
+                        const imageUrl = res.item.image || '/assets/img/og-preview.webp';
                         return `
                         <a href="${res.item.slug}/" class="flex items-center gap-4 p-4 hover:bg-stone-50 transition-colors border-b border-stone-100 last:border-0">
                             <img src="${imageUrl}" class="w-12 h-12 object-cover rounded-lg">
