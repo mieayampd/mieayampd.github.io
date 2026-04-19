@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "blog-gen": "node scripts/blog-gen.js",
-    "predev": "node scripts/blog-gen.js",
+    "llms-gen": "node scripts/llms-gen.js",
+    "predev": "node scripts/blog-gen.js && node scripts/llms-gen.js",
     "dev": "vite",
-    "prebuild": "node scripts/blog-gen.js",
+    "prebuild": "node scripts/blog-gen.js && node scripts/llms-gen.js",
     "build": "vite build",
     "clean": "node scripts/clean-gen.js",
     "preview": "vite preview"

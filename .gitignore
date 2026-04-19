@@ -46,6 +46,8 @@ desktop.ini
 yarn.lock
 pnpm-lock.yaml
 
-# Generated Blog Content
+# Generated Content
 blog/*/
 public/blog-data.json
+public/llms.txt
+public/llms-full.txt
