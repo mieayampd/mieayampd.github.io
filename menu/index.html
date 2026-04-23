@@ -23,20 +23,48 @@
 <body class="bg-stone-50 text-stone-900 selection:bg-orange-200 selection:text-orange-900">
 
     <!-- Navbar -->
-    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 px-6 py-4">
-        <div class="max-w-7xl mx-auto flex items-center justify-between bg-white/70 backdrop-blur-md rounded-2xl px-6 py-3 border border-stone-200 shadow-sm">
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 px-6 py-4 transition-all duration-300">
+        <div class="max-w-7xl mx-auto flex items-center justify-between bg-white/70 backdrop-blur-md rounded-2xl px-6 py-3 border border-stone-200 shadow-sm transition-all duration-300">
             <a href="/" class="flex items-center gap-3">
                 <img src="/assets/img/logo-nav.webp" alt="Mie Ayam Pak Dul Logo" class="w-8 h-8 object-contain">
                 <span class="font-display text-lg font-bold tracking-tight">Mie Ayam Pak Dul</span>
             </a>
-            <div class="flex items-center gap-4">
-                <button id="cart-toggle" class="relative p-2 text-stone-600 hover:bg-stone-100 rounded-lg transition-colors">
+
+            <!-- Desktop Nav -->
+            <div class="hidden lg:flex items-center gap-6 font-medium text-sm text-stone-600">
+                <a href="/" class="hover:text-amber-600 transition-colors">Beranda</a>
+                <a href="/order/" class="hover:text-amber-600 transition-colors">Quick Order</a>
+                <button id="cart-toggle-desktop" class="relative p-2 text-stone-600 hover:bg-stone-100 rounded-lg transition-colors ml-2">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                     </svg>
-                    <span id="cart-count" class="absolute -top-1 -right-1 bg-amber-600 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                    <span class="cart-count absolute -top-1 -right-1 bg-amber-600 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
                 </button>
-                <a href="/" class="hidden md:block text-sm font-medium text-stone-600 hover:text-amber-600 transition-colors">Beranda</a>
+            </div>
+
+            <!-- Mobile Actions -->
+            <div class="flex items-center gap-2 lg:hidden">
+                <button id="cart-toggle-mobile" class="relative p-2 text-stone-600 hover:bg-stone-100 rounded-lg transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span class="cart-count absolute -top-1 -right-1 bg-amber-600 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                </button>
+                <button id="menu-toggle" aria-label="Buka Menu" class="p-2 text-stone-600 hover:bg-stone-100 rounded-lg transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full px-6 py-4 lg:hidden">
+            <div class="bg-white rounded-2xl border border-stone-200 shadow-xl overflow-hidden animate-in fade-in slide-in-from-top-4 duration-300">
+                <div class="flex flex-col p-4 gap-2">
+                    <a href="/" class="px-4 py-3 rounded-xl hover:bg-stone-50 font-medium transition-colors">Beranda</a>
+                    <a href="/order/" class="px-4 py-3 rounded-xl hover:bg-stone-50 font-medium transition-colors">Quick Order</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -122,33 +150,14 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const menuGrid = document.getElementById('full-menu-grid');
-            const cartToggle = document.getElementById('cart-toggle');
+            const cartToggleDesktop = document.getElementById('cart-toggle-desktop');
+            const cartToggleMobile = document.getElementById('cart-toggle-mobile');
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
             const closeCart = document.getElementById('close-cart');
             const drawer = document.getElementById('cart-drawer');
             const backdrop = document.getElementById('cart-backdrop');
             const checkoutBtn = document.getElementById('checkout-btn');
-
-            // Render all menu items
-            menuGrid.innerHTML = menuData.map(item => `
-                <div class="bg-white rounded-2xl md:rounded-3xl overflow-hidden border border-stone-100 hover:border-amber-200 hover:shadow-xl transition-all duration-300 flex flex-col group text-left">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                    </div>
-                    <div class="p-5 md:p-8 flex-1 flex flex-col justify-between space-y-3 md:space-y-4">
-                        <div class="space-y-1.5 md:space-y-2">
-                            <div class="flex justify-between items-start gap-2">
-                                <h3 class="text-lg md:text-xl font-bold leading-tight">${item.name}</h3>
-                                <span class="text-amber-700 font-mono font-bold text-sm md:text-base whitespace-nowrap">Rp ${item.price.toLocaleString('id-ID')}</span>
-                            </div>
-                            <p class="text-stone-500 text-xs md:text-sm leading-relaxed">${item.description}</p>
-                        </div>
-                        <button onclick="cartUtils.addToCart('${item.id}'); openCart();" 
-                            class="w-full py-2.5 md:py-3 bg-stone-50 border border-stone-200 rounded-xl font-bold group-hover:bg-amber-700 group-hover:text-white group-hover:border-amber-700 transition-all text-sm md:text-base">
-                            Tambah ke Keranjang
-                        </button>
-                    </div>
-                </div>
-            `).join('');
 
             function openCart() {
                 drawer.classList.remove('translate-x-full');
@@ -162,9 +171,83 @@
                 setTimeout(() => backdrop.classList.add('hidden'), 300);
             }
 
-            cartToggle.addEventListener('click', openCart);
+            if (cartToggleDesktop) cartToggleDesktop.addEventListener('click', openCart);
+            if (cartToggleMobile) cartToggleMobile.addEventListener('click', openCart);
+            if (menuToggle && mobileMenu) {
+                menuToggle.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+            
             closeCart.addEventListener('click', hideCart);
             backdrop.addEventListener('click', hideCart);
+
+            // Navbar Interaction
+            const navbar = document.getElementById('navbar');
+            let lastScrollY = window.scrollY;
+            window.addEventListener('scroll', () => {
+                const currentScrollY = window.scrollY;
+                const isScrolled = currentScrollY > 50;
+                navbar.classList.toggle('py-2', isScrolled);
+                const navContainer = navbar.querySelector('div');
+                
+                if (isScrolled) {
+                    navContainer.classList.remove('bg-white/70');
+                    navContainer.classList.add('bg-white/95', 'shadow-lg');
+                } else {
+                    navContainer.classList.add('bg-white/70');
+                    navContainer.classList.remove('bg-white/95', 'shadow-lg');
+                }
+
+                // Hide on scroll down, show on scroll up
+                if (mobileMenu.classList.contains('hidden')) {
+                    if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                        navbar.style.transform = 'translateY(-100%)';
+                    } else {
+                        navbar.style.transform = 'translateY(0)';
+                    }
+                }
+                lastScrollY = currentScrollY;
+            });
+
+            const categories = {
+                'mie-ayam': '🍜 Mie Ayam Favorit',
+                'minuman': '🥤 Minuman Segar'
+            };
+
+            let html = '';
+            for (const [catId, catName] of Object.entries(categories)) {
+                const items = menuData.filter(i => i.category === catId);
+                if (items.length > 0) {
+                    html += `
+                        <div class="col-span-full pt-8 pb-4">
+                            <h2 class="text-2xl md:text-3xl font-display font-extrabold tracking-tight text-stone-800">${catName}</h2>
+                            <div class="w-12 h-1 bg-amber-600 rounded-full mt-2"></div>
+                        </div>
+                    `;
+                    html += items.map(item => `
+                        <div class="bg-white rounded-2xl md:rounded-3xl overflow-hidden border border-stone-100 hover:border-amber-200 hover:shadow-xl transition-all duration-300 flex flex-col group text-left">
+                            <div class="aspect-[4/3] overflow-hidden">
+                                <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            </div>
+                            <div class="p-5 md:p-8 flex-1 flex flex-col justify-between space-y-3 md:space-y-4">
+                                <div class="space-y-1.5 md:space-y-2">
+                                    <div class="flex justify-between items-start gap-2">
+                                        <h3 class="text-lg md:text-xl font-bold leading-tight">${item.name}</h3>
+                                        <span class="text-amber-700 font-mono font-bold text-sm md:text-base whitespace-nowrap">Rp ${item.price.toLocaleString('id-ID')}</span>
+                                    </div>
+                                    <p class="text-stone-500 text-xs md:text-sm leading-relaxed">${item.description}</p>
+                                </div>
+                                <button onclick="cartUtils.addToCart('${item.id}'); openCart();" 
+                                    class="w-full py-2.5 md:py-3 bg-stone-50 border border-stone-200 rounded-xl font-bold group-hover:bg-amber-700 group-hover:text-white group-hover:border-amber-700 transition-all text-sm md:text-base">
+                                    Tambah ke Keranjang
+                                </button>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            }
+            menuGrid.innerHTML = html;
 
             checkoutBtn.addEventListener('click', () => {
                 const cart = cartUtils.getCart();

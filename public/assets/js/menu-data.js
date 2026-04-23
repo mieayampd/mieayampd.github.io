@@ -30,6 +30,22 @@ const menuData = [
         description: 'Sensasi makan mie ayam dengan balungan yang gurih dan nikmat.',
         image: '/assets/img/menu-balungan.webp',
         category: 'mie-ayam'
+    },
+    {
+        id: 'es-jeruk',
+        name: 'Es Jeruk',
+        price: 5000,
+        description: 'Perasan jeruk segar asli dengan tambahan es batu yang menyegarkan.',
+        image: '/assets/img/menu-es-jeruk.png',
+        category: 'minuman'
+    },
+    {
+        id: 'es-teh',
+        name: 'Es Teh Manis',
+        price: 3000,
+        description: 'Teh pilihan yang diseduh sempurna, manis, dan menyegarkan.',
+        image: '/assets/img/menu-es-teh.png',
+        category: 'minuman'
     }
 ];
 

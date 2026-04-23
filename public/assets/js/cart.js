@@ -48,14 +48,14 @@ function clearCart() {
 }
 
 function updateCartUI() {
-    const cartCount = document.getElementById('cart-count');
+    const cartCounts = document.querySelectorAll('.cart-count');
     const cartTotal = document.getElementById('cart-total');
     const cartItems = document.getElementById('cart-items');
 
     const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
     const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-    if (cartCount) cartCount.textContent = totalCount;
+    cartCounts.forEach(el => el.textContent = totalCount);
     if (cartTotal) cartTotal.textContent = `Rp ${totalPrice.toLocaleString('id-ID')}`;
 
     const noteOptions = [
