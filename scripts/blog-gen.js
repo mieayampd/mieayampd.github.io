@@ -29,6 +29,8 @@ async function generateBlog() {
     const posts = [];
     const viteInputs = {
         main: './index.html',
+        order: './order/index.html',
+        menu: './menu/index.html',
         game: './game/index.html',
         blog: './blog/index.html'
     };
@@ -129,6 +131,8 @@ async function updateSitemap(posts) {
     // Core pages that should always be there
     const corePages = [
         { loc: `${baseUrl}/`, lastmod: today, changefreq: 'weekly', priority: '1.0' },
+        { loc: `${baseUrl}/order/`, lastmod: today, changefreq: 'weekly', priority: '0.9' },
+        { loc: `${baseUrl}/menu/`, lastmod: today, changefreq: 'weekly', priority: '0.9' },
         { loc: `${baseUrl}/game/`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
         { loc: `${baseUrl}/blog/`, lastmod: today, changefreq: 'weekly', priority: '0.9' }
     ];
