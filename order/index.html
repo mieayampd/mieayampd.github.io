@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesan Sekarang – Mie Ayam Pak Dul Bumiayu</title>
+    <meta name="description" content="Pesan Mie Ayam Pak Dul Bumiayu secara online. Cepat, mudah, dan langsung terhubung ke WhatsApp.">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/webp" href="/assets/img/logo-nav.webp">
+    <link rel="apple-touch-icon" href="/assets/img/logo-nav.webp">
+    <meta name="theme-color" content="#d97706">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/tailwind.css">
+    
+    <!-- Preload Critical Fonts -->
+    <link rel="preload" href="/assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/playfair-display.woff2" as="font" type="font/woff2" crossorigin>
+</head>
+
+<body class="bg-stone-50 text-stone-900 selection:bg-orange-200 selection:text-orange-900">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between bg-white/70 backdrop-blur-md rounded-2xl px-6 py-3 border border-stone-200 shadow-sm">
+            <a href="/" class="flex items-center gap-3">
+                <img src="/assets/img/logo-nav.webp" alt="Mie Ayam Pak Dul Logo" class="w-8 h-8 object-contain">
+                <span class="font-display text-lg font-bold tracking-tight">Mie Ayam Pak Dul</span>
+            </a>
+            <div class="flex items-center gap-4">
+                <a href="/" class="text-sm font-medium text-stone-600 hover:text-amber-600 transition-colors">Kembali ke Beranda</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 md:pt-32 pb-20 px-4 md:px-6">
+        <div class="max-w-2xl mx-auto">
+            <div class="text-center mb-8 md:mb-12 space-y-4">
+                <h1 class="text-3xl md:text-5xl font-display font-extrabold tracking-tight">Quick Order</h1>
+                <p class="text-sm md:text-base text-stone-500">Pilih menu favoritmu dan kirim pesanan langsung ke WhatsApp kami.</p>
+            </div>
+
+            <form id="quick-order-form" class="space-y-6 md:space-y-8 bg-white p-5 md:p-10 rounded-3xl md:rounded-[2.5rem] border border-stone-100 shadow-xl">
+                <div id="menu-list" class="space-y-4 md:space-y-6">
+                    <!-- Menu items will be injected here -->
+                </div>
+
+                <div class="space-y-3">
+                    <label for="order-note" class="block text-sm font-bold text-stone-700">Catatan Tambahan (Opsional)</label>
+                    <textarea id="order-note" rows="3" 
+                        class="w-full px-4 md:px-5 py-3 md:py-4 rounded-xl md:rounded-2xl border border-stone-200 focus:border-amber-500 focus:ring-4 focus:ring-amber-500/10 transition-all outline-none resize-none text-sm md:text-base"
+                        placeholder="Contoh: Mie nggak pakai sawi, atau tambah ceker 2 biji..."></textarea>
+                </div>
+
+                <div class="pt-4 border-t border-stone-100 flex flex-col gap-4">
+                    <div class="flex justify-between items-center text-lg md:text-xl font-bold">
+                        <span>Estimasi Total</span>
+                        <span id="grand-total" class="text-amber-700">Rp 0</span>
+                    </div>
+                    
+                    <button type="submit" 
+                        class="w-full py-4 md:py-5 bg-amber-700 text-white rounded-xl md:rounded-2xl font-black text-lg md:text-xl hover:bg-amber-800 transition-all hover:scale-[1.02] active:scale-95 shadow-xl shadow-amber-700/20 flex items-center justify-center gap-3">
+                        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                        </svg>
+                        Order Sekarang
+                    </button>
+                    
+                    <a href="/menu/" class="text-center text-stone-500 font-bold hover:text-amber-600 transition-all py-2 text-sm">
+                        Lihat Semua Menu →
+                    </a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="bg-stone-900 text-white py-10 md:py-12 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-stone-400 text-xs uppercase tracking-widest font-mono">Mie Ayam Pak Dul &copy; 2026</p>
+        </div>
+    </footer>
+
+    <script src="/assets/js/menu-data.js"></script>
+    <script src="/assets/js/order.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuList = document.getElementById('menu-list');
+            const grandTotalEl = document.getElementById('grand-total');
+            const form = document.getElementById('quick-order-form');
+
+            // Render popular menu items (all 4 for now)
+            menuList.innerHTML = menuData.map(item => `
+                <div class="flex flex-col gap-3 p-4 rounded-2xl bg-stone-50 border border-stone-100">
+                    <div class="flex items-center gap-3 md:gap-4">
+                        <img src="${item.image}" alt="${item.name}" class="w-12 h-12 md:w-16 md:h-16 object-cover rounded-lg md:rounded-xl shadow-sm">
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-bold text-base md:text-lg truncate">${item.name}</h3>
+                            <p class="text-amber-700 font-mono font-bold text-xs md:text-sm">Rp ${item.price.toLocaleString('id-ID')}</p>
+                        </div>
+                        <div class="flex items-center gap-2 md:gap-3">
+                            <button type="button" onclick="updateQty('${item.id}', -1)" class="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-white border border-stone-200 flex items-center justify-center hover:bg-stone-100 transition-colors">-</button>
+                            <input type="number" id="qty-${item.id}" value="0" min="0" readonly class="w-6 md:w-8 text-center font-mono font-bold bg-transparent text-sm md:text-base">
+                            <button type="button" onclick="updateQty('${item.id}', 1)" class="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-white border border-stone-200 flex items-center justify-center hover:bg-stone-100 transition-colors">+</button>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-1.5 pt-2 border-t border-stone-200/50">
+                        <label class="text-[10px] font-bold text-stone-400 uppercase tracking-wider">Catatan Per Item</label>
+                        <select id="note-${item.id}" class="w-full px-3 py-2 rounded-lg border border-stone-200 bg-white text-xs outline-none focus:border-amber-500 transition-all appearance-none cursor-pointer">
+                            <option value="">Tanpa Catatan</option>
+                            <option value="Mienya dipisah">Mienya dipisah</option>
+                            <option value="Tanpa Sawi">Tanpa Sawi</option>
+                            <option value="Tanpa Daun Bawang">Tanpa Daun Bawang</option>
+                            <option value="Ekstra Sambal">Ekstra Sambal</option>
+                            <option value="Kuah sedikit">Kuah sedikit</option>
+                        </select>
+                    </div>
+                </div>
+            `).join('');
+
+            window.updateQty = (id, delta) => {
+                const input = document.getElementById(`qty-${id}`);
+                let val = parseInt(input.value) + delta;
+                if (val < 0) val = 0;
+                input.value = val;
+                calculateTotal();
+            };
+
+            function calculateTotal() {
+                let total = 0;
+                menuData.forEach(item => {
+                    const qty = parseInt(document.getElementById(`qty-${item.id}`).value);
+                    total += item.price * qty;
+                });
+                grandTotalEl.textContent = `Rp ${total.toLocaleString('id-ID')}`;
+            }
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const items = menuData.map(item => ({
+                    ...item,
+                    quantity: parseInt(document.getElementById(`qty-${item.id}`).value),
+                    note: document.getElementById(`note-${item.id}`).value
+                })).filter(item => item.quantity > 0);
+
+                if (items.length === 0) {
+                    alert('Pilih minimal satu menu ya kak!');
+                    return;
+                }
+
+                const note = document.getElementById('order-note').value;
+                orderUtils.redirectToWhatsApp(items, note);
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Lengkap – Mie Ayam Pak Dul Bumiayu</title>
+    <meta name="description" content="Daftar menu lengkap Mie Ayam Pak Dul Bumiayu. Pilih topping favoritmu dan tambahkan ke keranjang.">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/webp" href="/assets/img/logo-nav.webp">
+    <link rel="apple-touch-icon" href="/assets/img/logo-nav.webp">
+    <meta name="theme-color" content="#d97706">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/tailwind.css">
+    
+    <!-- Preload Critical Fonts -->
+    <link rel="preload" href="/assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/playfair-display.woff2" as="font" type="font/woff2" crossorigin>
+</head>
+
+<body class="bg-stone-50 text-stone-900 selection:bg-orange-200 selection:text-orange-900">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between bg-white/70 backdrop-blur-md rounded-2xl px-6 py-3 border border-stone-200 shadow-sm">
+            <a href="/" class="flex items-center gap-3">
+                <img src="/assets/img/logo-nav.webp" alt="Mie Ayam Pak Dul Logo" class="w-8 h-8 object-contain">
+                <span class="font-display text-lg font-bold tracking-tight">Mie Ayam Pak Dul</span>
+            </a>
+            <div class="flex items-center gap-4">
+                <button id="cart-toggle" class="relative p-2 text-stone-600 hover:bg-stone-100 rounded-lg transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-amber-600 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                </button>
+                <a href="/" class="hidden md:block text-sm font-medium text-stone-600 hover:text-amber-600 transition-colors">Beranda</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Side Cart Drawer -->
+    <div id="cart-drawer" class="fixed inset-y-0 right-0 w-full md:w-96 bg-white z-[60] shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out border-l border-stone-100 flex flex-col">
+        <div class="p-6 border-b border-stone-100 flex justify-between items-center">
+            <h2 class="font-display text-xl font-bold">Keranjang Belanja</h2>
+            <button id="close-cart" class="p-2 text-stone-400 hover:text-stone-900">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        
+        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-2">
+            <!-- Cart items injected here -->
+        </div>
+
+        <div class="p-6 border-t border-stone-100 space-y-4">
+            <div class="flex justify-between items-center font-bold text-lg">
+                <span>Total</span>
+                <span id="cart-total">Rp 0</span>
+            </div>
+            <button id="checkout-btn" class="w-full py-4 bg-amber-700 text-white rounded-xl font-bold hover:bg-amber-800 transition-all shadow-lg shadow-amber-700/20">
+                Checkout via WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- Backdrop -->
+    <div id="cart-backdrop" class="fixed inset-0 bg-stone-900/20 backdrop-blur-sm z-[55] hidden opacity-0 transition-opacity duration-300"></div>
+
+    <main class="pt-24 md:pt-32 pb-20 px-4 md:px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-10 md:mb-16 space-y-4">
+                <h1 class="text-4xl md:text-6xl font-display font-extrabold tracking-tight">Daftar Menu</h1>
+                <p class="text-sm md:text-base text-stone-500 max-w-lg mx-auto">Pilih sesukamu, tambahkan topping sesuka hati. Mie Ayam Pak Dul siap menemani hari-harimu.</p>
+            </div>
+
+            <div id="full-menu-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <!-- Menu grid injected here -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-stone-50 py-12 px-6 border-t border-stone-200">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-stone-500 text-sm font-mono">&copy; 2026 Mie Ayam Pak Dul Bumiayu</p>
+        </div>
+    </footer>
+
+    <script src="/assets/js/menu-data.js"></script>
+    <script src="/assets/js/order.js"></script>
+    <script src="/assets/js/cart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuGrid = document.getElementById('full-menu-grid');
+            const cartToggle = document.getElementById('cart-toggle');
+            const closeCart = document.getElementById('close-cart');
+            const drawer = document.getElementById('cart-drawer');
+            const backdrop = document.getElementById('cart-backdrop');
+            const checkoutBtn = document.getElementById('checkout-btn');
+
+            // Render all menu items
+            menuGrid.innerHTML = menuData.map(item => `
+                <div class="bg-white rounded-2xl md:rounded-3xl overflow-hidden border border-stone-100 hover:border-amber-200 hover:shadow-xl transition-all duration-300 flex flex-col group text-left">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-5 md:p-8 flex-1 flex flex-col justify-between space-y-3 md:space-y-4">
+                        <div class="space-y-1.5 md:space-y-2">
+                            <div class="flex justify-between items-start gap-2">
+                                <h3 class="text-lg md:text-xl font-bold leading-tight">${item.name}</h3>
+                                <span class="text-amber-700 font-mono font-bold text-sm md:text-base whitespace-nowrap">Rp ${item.price.toLocaleString('id-ID')}</span>
+                            </div>
+                            <p class="text-stone-500 text-xs md:text-sm leading-relaxed">${item.description}</p>
+                        </div>
+                        <button onclick="cartUtils.addToCart('${item.id}'); openCart();" 
+                            class="w-full py-2.5 md:py-3 bg-stone-50 border border-stone-200 rounded-xl font-bold group-hover:bg-amber-700 group-hover:text-white group-hover:border-amber-700 transition-all text-sm md:text-base">
+                            Tambah ke Keranjang
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            function openCart() {
+                drawer.classList.remove('translate-x-full');
+                backdrop.classList.remove('hidden');
+                setTimeout(() => backdrop.classList.add('opacity-100'), 10);
+            }
+
+            function hideCart() {
+                drawer.classList.add('translate-x-full');
+                backdrop.classList.remove('opacity-100');
+                setTimeout(() => backdrop.classList.add('hidden'), 300);
+            }
+
+            cartToggle.addEventListener('click', openCart);
+            closeCart.addEventListener('click', hideCart);
+            backdrop.addEventListener('click', hideCart);
+
+            checkoutBtn.addEventListener('click', () => {
+                const cart = cartUtils.getCart();
+                if (cart.length === 0) return;
+                orderUtils.redirectToWhatsApp(cart, "");
+            });
+
+            window.openCart = openCart;
+        });
+    </script>
+</body>
+
+</html>

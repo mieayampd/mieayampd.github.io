@@ -94,6 +94,8 @@ export default defineConfig({
       /* MABE_INPUTS_START */
       input: {
         'main': './index.html',
+        'order': './order/index.html',
+        'menu': './menu/index.html',
         'game': './game/index.html',
         'blog': './blog/index.html',
         'blog-bot-whatsapp-printer-kasir-solusi-cerdas-and-murah-untuk-warung-mie-ayam': './blog/bot-whatsapp-printer-kasir-solusi-cerdas-and-murah-untuk-warung-mie-ayam/index.html',
