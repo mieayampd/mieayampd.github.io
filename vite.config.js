@@ -34,6 +34,7 @@ const blogWatcher = () => ({
 });
 
 export default defineConfig({
+  appType: 'mpa',
   plugins: [
     tailwindcss(),
     blogWatcher(),
@@ -101,7 +102,8 @@ export default defineConfig({
         'blog-bot-whatsapp-printer-kasir-solusi-cerdas-and-murah-untuk-warung-mie-ayam': './blog/bot-whatsapp-printer-kasir-solusi-cerdas-and-murah-untuk-warung-mie-ayam/index.html',
         'blog-panduan-menghubungkan-vps-ke-cloudflare-amankan-ip-and-proteksi-maksimal': './blog/panduan-menghubungkan-vps-ke-cloudflare-amankan-ip-and-proteksi-maksimal/index.html',
         'blog-bagaimana-situs-kami-mencapai-skor-pagespeed-100percent': './blog/bagaimana-situs-kami-mencapai-skor-pagespeed-100percent/index.html',
-        'blog-sekilas-tentang-mie-ayam-pak-dul': './blog/sekilas-tentang-mie-ayam-pak-dul/index.html'
+        'blog-sekilas-tentang-mie-ayam-pak-dul': './blog/sekilas-tentang-mie-ayam-pak-dul/index.html',
+        'security': './security.html'
       }
       /* MABE_INPUTS_END */
     },
