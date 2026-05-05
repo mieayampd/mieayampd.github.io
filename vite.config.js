@@ -103,7 +103,7 @@ export default defineConfig({
         'blog-panduan-menghubungkan-vps-ke-cloudflare-amankan-ip-and-proteksi-maksimal': './blog/panduan-menghubungkan-vps-ke-cloudflare-amankan-ip-and-proteksi-maksimal/index.html',
         'blog-bagaimana-situs-kami-mencapai-skor-pagespeed-100percent': './blog/bagaimana-situs-kami-mencapai-skor-pagespeed-100percent/index.html',
         'blog-sekilas-tentang-mie-ayam-pak-dul': './blog/sekilas-tentang-mie-ayam-pak-dul/index.html',
-        'security': './security.html'
+        'security': './security/index.html'
       }
       /* MABE_INPUTS_END */
     },
