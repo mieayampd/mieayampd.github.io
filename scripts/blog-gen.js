@@ -32,7 +32,8 @@ async function generateBlog() {
         order: './order/index.html',
         menu: './menu/index.html',
         game: './game/index.html',
-        blog: './blog/index.html'
+        blog: './blog/index.html',
+        security: './security/index.html'
     };
 
     // 3. Process each post
@@ -134,7 +135,8 @@ async function updateSitemap(posts) {
         { loc: `${baseUrl}/order/`, lastmod: today, changefreq: 'weekly', priority: '0.9' },
         { loc: `${baseUrl}/menu/`, lastmod: today, changefreq: 'weekly', priority: '0.9' },
         { loc: `${baseUrl}/game/`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
-        { loc: `${baseUrl}/blog/`, lastmod: today, changefreq: 'weekly', priority: '0.9' }
+        { loc: `${baseUrl}/blog/`, lastmod: today, changefreq: 'weekly', priority: '0.9' },
+        { loc: `${baseUrl}/security/`, lastmod: today, changefreq: 'monthly', priority: '0.5' }
     ];
 
     const blogPages = posts.map(post => ({
