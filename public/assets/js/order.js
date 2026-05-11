@@ -19,7 +19,7 @@ function formatWhatsAppMessage(items, note) {
 }
 
 function redirectToWhatsApp(items, note) {
-    const phoneNumber = "6288808620330";
+    const phoneNumber = "6287816541337";
     const encodedMessage = formatWhatsAppMessage(items, note);
     window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
 }
