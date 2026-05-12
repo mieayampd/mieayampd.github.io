@@ -48,6 +48,3 @@ pnpm-lock.yaml
 
 # Generated Content
 blog/*/
-public/blog-data.json
-public/llms.txt
-public/llms-full.txt
